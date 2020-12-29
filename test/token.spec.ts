@@ -38,11 +38,11 @@ describe('First Unit Test', () => {
     ];
     const tokenSequence = new Lexer(tokens).tokenize(str);
     const expectedTokenSequence = [
-      {name: 'var', value: 'var'},
-      {name: 'identifier', value: 'x'},
-      {name: 'equal', value: '='},
-      {name: 'identifier', value: '3'},
-      {name: 'semi-column', value: ';'},
+      {name: 'var', value: 'var', group: 'keyword'},
+      {name: 'identifier', value: 'x', group: 'identifier'},
+      {name: 'equal', value: '=', group: 'operator'},
+      {name: 'identifier', value: '3', group: 'identifier'},
+      {name: 'semi-column', value: ';', group: 'separator'},
     ];
     assert.deepStrictEqual(tokenSequence, expectedTokenSequence);
   });
