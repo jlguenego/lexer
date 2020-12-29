@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/jlguenego/lexer/compare/v1.1.0...v1.1.1) (2020-12-29)
+
+
+### Bug Fixes
+
+* package in devdep ([45d39a7](https://github.com/jlguenego/lexer/commit/45d39a77f5e879ea0b2ad618a813dd0f13ba62c3))
+
 ## 1.1.0 (2020-12-29)
 
 
