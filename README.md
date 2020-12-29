@@ -126,6 +126,8 @@ tokenSequence: [
 ## TODO
 
 - Test with ASN.1 language.
+- Test comment : monoline, multiline.
+- String with "", '', "\"", etc.
 
 ## Author
 
