@@ -54,7 +54,6 @@ export class Lexer {
       tokenIndex++;
     }
 
-    console.log('state: ', state);
     return (state as TokenInstance[]).map(ti =>
       ti.getValue()
     ) as TokenInstance[];

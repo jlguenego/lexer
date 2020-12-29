@@ -1,0 +1,8 @@
+.nyc_output
+coverage
+node_modules
+.eslintignore
+.eslintrc.json
+.prettierrc.js
+CHANGELOG.md
+tsconfig.json
