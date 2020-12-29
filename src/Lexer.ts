@@ -1,3 +1,4 @@
+import {Group} from './Group';
 import {
   Token,
   TokenElement,
@@ -11,6 +12,7 @@ export class Lexer {
   static createToken(spec: TokenSpec) {
     const token: Token = {
       ignore: false,
+      group: Group.NONE,
       ...spec,
     };
     return token;
@@ -18,15 +20,23 @@ export class Lexer {
 
   static createKeywordTokens(array: string[]) {
     return array.map(str =>
-      Lexer.createToken({name: str, pattern: new RegExp(str)})
+      Lexer.createToken({
+        name: str,
+        pattern: new RegExp(str),
+        group: Group.KEYWORD,
+      })
     );
   }
 
   static createOperatorTokens(array: TokenSpec[]) {
-    return array.map(spec => Lexer.createToken({...spec}));
+    return array.map(spec =>
+      Lexer.createToken({group: Group.OPERATOR, ...spec})
+    );
   }
   static createSeparatorTokens(array: TokenSpec[]) {
-    return array.map(spec => Lexer.createToken({...spec}));
+    return array.map(spec =>
+      Lexer.createToken({group: Group.SEPARATOR, ...spec})
+    );
   }
 
   constructor(public tokens: Token[]) {}
@@ -81,7 +91,7 @@ const applyTokenOnTokenElement = (
     result.push(new SourceElement(elt.text.substr(0, matched.index)));
   }
   if (!token.ignore) {
-    result.push(new TokenInstance(token.name, matched[0]));
+    result.push(new TokenInstance(token.name, matched[0], token.group));
   }
   const remainingIndex = matched.index + matched[0].length;
   if (remainingIndex < elt.text.length) {

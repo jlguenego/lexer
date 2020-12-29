@@ -1,4 +1,5 @@
 import assert from 'assert';
+import {Group} from '../src/Group';
 import {Lexer} from '../src/index';
 
 describe('First Unit Test', () => {
@@ -25,6 +26,7 @@ describe('First Unit Test', () => {
     const identifier = Lexer.createToken({
       name: 'identifier',
       pattern: /\w+/,
+      group: Group.IDENTIFIER,
     });
 
     const tokens = [
