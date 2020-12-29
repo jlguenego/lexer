@@ -1,8 +1,8 @@
 {
-  "name": "lexer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "@jlguenego/lexer",
+  "version": "1.1.0",
+  "description": "Lexical analyzer in Full Javascript / Typescript",
+  "main": "./build/src/index.js",
   "scripts": {
     "test": "nyc mocha",
     "lint": "gts lint",
@@ -11,10 +11,14 @@
     "fix": "gts fix",
     "prepare": "npm.cmd run compile",
     "pretest": "npm.cmd run compile",
-    "posttest": "npm.cmd run lint"
+    "posttest": "npm.cmd run lint",
+    "release": "standard-version"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "lexer",
+    "lexical analysis"
+  ],
+  "author": "Jean-Louis GUENEGO <jlguenego@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/mocha": "^8.2.0",
