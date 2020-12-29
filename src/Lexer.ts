@@ -42,8 +42,10 @@ export class Lexer {
   constructor(public tokens: Token[]) {}
 
   tokenize(source: string): TokenInstanceObject[] {
-    const sourceElt = new SourceElement(source);
-    const initialState: TokenElement[] = [sourceElt];
+    const lineElts = source
+      .split(/\r?\n/)
+      .map((line, i) => new SourceElement(line, {col: 1, line: i + 1}));
+    const initialState: TokenElement[] = lineElts;
     let state = initialState;
     let tokenIndex = 0;
     while (hasSource(state) && tokenIndex < this.tokens.length) {
@@ -52,6 +54,7 @@ export class Lexer {
       tokenIndex++;
     }
 
+    console.log('state: ', state);
     return (state as TokenInstance[]).map(ti =>
       ti.getValue()
     ) as TokenInstance[];
@@ -77,6 +80,10 @@ const applyTokenOnTokenElement = (
   if (!(elt instanceof SourceElement)) {
     return [elt];
   }
+  // remove empty line from tokenize.
+  if (elt.text.length === 0) {
+    return [];
+  }
   const matched = elt.text.match(new RegExp(token.pattern));
   if (!matched) {
     return [elt];
@@ -88,16 +95,29 @@ const applyTokenOnTokenElement = (
     );
   }
   if (matched.index > 0) {
-    result.push(new SourceElement(elt.text.substr(0, matched.index)));
+    result.push(
+      new SourceElement(elt.text.substr(0, matched.index), {
+        col: elt.position.col,
+        line: elt.position.line,
+      })
+    );
   }
   if (!token.ignore) {
-    result.push(new TokenInstance(token.name, matched[0], token.group));
+    result.push(
+      new TokenInstance(token.name, matched[0], token.group, {
+        col: elt.position.col + matched.index,
+        line: elt.position.line,
+      })
+    );
   }
   const remainingIndex = matched.index + matched[0].length;
   if (remainingIndex < elt.text.length) {
     result.push(
       ...applyTokenOnTokenElement(
-        new SourceElement(elt.text.substr(remainingIndex)),
+        new SourceElement(elt.text.substr(remainingIndex), {
+          col: elt.position.col + matched.index + matched[0].length,
+          line: elt.position.line,
+        }),
         token
       )
     );
