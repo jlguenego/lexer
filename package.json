@@ -1,6 +1,6 @@
 {
   "name": "@jlguenego/lexer",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Lexical analyzer in Full Javascript / Typescript",
   "main": "./build/src/index.js",
   "private": false,
