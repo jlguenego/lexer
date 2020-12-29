@@ -40,7 +40,6 @@ var y = 52;
       identifier,
     ];
     const tokenSequence = new Lexer(tokens).tokenize(str);
-    console.log('tokenSequence: ', tokenSequence);
     const expectedTokenSequence = [
       {
         name: 'var',
