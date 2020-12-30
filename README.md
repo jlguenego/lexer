@@ -129,10 +129,9 @@ tokenSequence: [
 
 ## TODO
 
-- Test with ASN.1 language.
+- Refactor token in rules
 - Test comment : monoline, multiline.
-- String with "", '', "\"", etc.
-- Token with same priority (first index is priority)
+- Explain how it is working.
 
 ## Author
 
