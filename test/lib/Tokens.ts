@@ -10,6 +10,12 @@ export const monolineComment = Lexer.createToken({
   pattern: /[/][/].*\n/,
 });
 
+export const multilineString = Lexer.createToken({
+  name: 'monoline string',
+  // this regexp contains a negative lookbehind
+  pattern: /"[^\n]*?(?<!\\)"/,
+});
+
 export const monolineString = Lexer.createToken({
   name: 'monoline string',
   // this regexp contains a negative lookbehind
