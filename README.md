@@ -22,35 +22,39 @@ var y = 52;
 `;
 
 // declare all the language token.
-const blank = Lexer.createToken({
+const blank = new Rule({
   name: 'blank',
   pattern: /\s+/,
   ignore: true,
 });
-const keywords = Lexer.createKeywordTokens(['var']);
-const operators = Lexer.createOperatorTokens([
+
+const keywords = Rule.createKeywordRules(['var']);
+
+const operators = Rule.createGroupRules(Group.OPERATOR, [
   {
     name: 'equal',
     pattern: '=',
   },
 ]);
-const separators = Lexer.createSeparatorTokens([
+
+const separators = Rule.createGroupRules(Group.SEPARATOR, [
   {
     name: 'semi-column',
     pattern: ';',
   },
 ]);
-const identifier = Lexer.createToken({
+
+const identifier = new Rule({
   name: 'identifier',
   pattern: /\w+/,
   group: Group.IDENTIFIER,
 });
 
 // the order is important. Token are applied from first to last.
-const tokens = [blank, ...keywords, ...operators, ...separators, identifier];
+const rules = [blank, ...keywords, ...operators, ...separators, identifier];
 
 // Do the job.
-const tokenSequence = new Lexer(tokens).tokenize(str);
+const tokenSequence = new Lexer(rules).tokenize(str);
 
 // print the output.
 console.log('tokenSequence: ', tokenSequence);
@@ -129,8 +133,6 @@ tokenSequence: [
 
 ## TODO
 
-- Refactor token in rules
-- Test comment : monoline, multiline.
 - Explain how it is working.
 - ESM module
 
