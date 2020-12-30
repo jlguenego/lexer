@@ -1,4 +1,4 @@
-import {TokenElement} from './interfaces/TokenElement';
+import {TokenElement} from './interfaces/State';
 import {applyTokenOnSourceElement} from './misc';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';

@@ -1,5 +1,5 @@
 import {Position} from './interfaces/Position';
-import {TokenElement} from './interfaces/TokenElement';
+import {TokenElement} from './interfaces/State';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
 import {Token} from './Token';
