@@ -129,7 +129,7 @@ tokenSequence: [
 
 ## Other Examples
 
-- See the (mocha test)[./test/].
+- See the [mocha test](./test/).
 
 ## TODO
 
