@@ -82,48 +82,7 @@ tokenSequence: [
     group: 'operator',
     position: {col: 7, line: 2},
   },
-  {
-    name: 'identifier',
-    value: '3',
-    group: 'identifier',
-    position: {col: 9, line: 2},
-  },
-  {
-    name: 'semi-column',
-    value: ';',
-    group: 'separator',
-    position: {col: 10, line: 2},
-  },
-  {
-    name: 'var',
-    value: 'var',
-    group: 'keyword',
-    position: {col: 1, line: 3},
-  },
-  {
-    name: 'identifier',
-    value: 'y',
-    group: 'identifier',
-    position: {col: 5, line: 3},
-  },
-  {
-    name: 'equal',
-    value: '=',
-    group: 'operator',
-    position: {col: 7, line: 3},
-  },
-  {
-    name: 'identifier',
-    value: '52',
-    group: 'identifier',
-    position: {col: 9, line: 3},
-  },
-  {
-    name: 'semi-column',
-    value: ';',
-    group: 'separator',
-    position: {col: 11, line: 3},
-  },
+  // ...
 ];
 ```
 
