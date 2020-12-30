@@ -1,6 +1,6 @@
 import {State} from './interfaces/State';
 import {TokenObjectSequence} from './interfaces/TokenInstanceObject';
-import {applyTokenOnSourceElement} from './misc';
+import {applyRuleOnSourceElement} from './misc';
 import {Rule} from './Rule';
 import {SourceElement} from './SourceElement';
 import {Token} from './Token';
@@ -40,7 +40,7 @@ const applyToken = (elts: State, token: Rule): State => {
       result.push(elt);
       continue;
     }
-    const parsedElts = applyTokenOnSourceElement(elt, token);
+    const parsedElts = applyRuleOnSourceElement(elt, token);
     result.push(...parsedElts);
   }
   return result;

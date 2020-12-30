@@ -1,5 +1,5 @@
 import {Position} from './interfaces/Position';
-import {TokenElement} from './interfaces/State';
+import {State} from './interfaces/State';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
 import {Token} from './Token';
@@ -15,20 +15,20 @@ export const positionAdd = (pos: Position, str: string): Position => {
   };
 };
 
-export const applyTokenOnSourceElement = (
+export const applyRuleOnSourceElement = (
   elt: SourceElement,
-  token: Rule,
-  global = true
-): TokenElement[] => {
+  rule: Rule,
+  matchAll = true
+): State => {
   // remove empty line from tokenize.
   if (elt.text.length === 0) {
     return [];
   }
-  const matched = elt.text.match(new RegExp(token.pattern, 's'));
+  const matched = elt.text.match(new RegExp(rule.pattern, 's'));
   if (!matched) {
     return [elt];
   }
-  const result: TokenElement[] = [];
+  const result: State = [];
   if (matched.index === undefined) {
     throw new Error(
       'matched exists and index not present. Case not implemented.'
@@ -41,14 +41,14 @@ export const applyTokenOnSourceElement = (
   if (matched.index > 0) {
     result.push(new SourceElement(prefix, posStart));
   }
-  if (!token.ignore) {
-    result.push(new Token(token.name, matched[0], token.group, posMatch));
+  if (!rule.ignore) {
+    result.push(new Token(rule.name, matched[0], rule.group, posMatch));
   }
   const remainingIndex = matched.index + matched[0].length;
 
   if (remainingIndex < elt.text.length) {
     const se = new SourceElement(elt.text.substr(remainingIndex), posSuffix);
-    const array = global ? applyTokenOnSourceElement(se, token) : [se];
+    const array = matchAll ? applyRuleOnSourceElement(se, rule) : [se];
     result.push(...array);
   }
 

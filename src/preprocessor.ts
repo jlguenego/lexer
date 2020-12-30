@@ -1,5 +1,5 @@
 import {State} from './interfaces/State';
-import {applyTokenOnSourceElement} from './misc';
+import {applyRuleOnSourceElement} from './misc';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
 import {Token} from './Token';
@@ -26,7 +26,7 @@ export const getNextState = (state: State, tokens: Rule[]) => {
   }
 
   const array = tokens
-    .map(token => applyTokenOnSourceElement(sourceElt, token, false))
+    .map(token => applyRuleOnSourceElement(sourceElt, token, false))
     .reduce(
       (acc, r) => {
         // min calc
