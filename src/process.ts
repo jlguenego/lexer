@@ -24,7 +24,7 @@ export const convertToTokenSequence = (state: State): Token[] => {
   return state.map(te => {
     if (te instanceof SourceElement) {
       throw new Error(
-        `Did not tokenize everything: '${te.text}' at line ${te.position.line} and col ${te.position.col}`
+        `Syntax Error (Lexer): '${te.text}' at line ${te.position.line} and col ${te.position.col}`
       );
     }
     return te;
