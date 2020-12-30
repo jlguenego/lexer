@@ -17,7 +17,7 @@ describe('String Unit Test', () => {
 var x = "this include double quote \\".";
 `;
 
-    const tokens = [
+    const rules = [
       multiLineComment,
       monolineComment,
       monolineString,
@@ -27,7 +27,7 @@ var x = "this include double quote \\".";
       ...separators,
       identifier,
     ];
-    const tokenSequence = new Lexer(tokens).tokenize(str);
+    const tokenSequence = new Lexer(rules).tokenize(str);
     const expectedTokenSequence = [
       {
         name: 'var',

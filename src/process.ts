@@ -31,7 +31,7 @@ export const convertToTokenSequence = (state: State): Token[] => {
   });
 };
 
-const applyRule = (elts: State, token: Rule): State => {
+const applyRule = (elts: State, rule: Rule): State => {
   const result: State = [];
 
   for (let i = 0; i < elts.length; i++) {
@@ -40,7 +40,7 @@ const applyRule = (elts: State, token: Rule): State => {
       result.push(elt);
       continue;
     }
-    const parsedElts = applyRuleOnSourceElement(elt, token);
+    const parsedElts = applyRuleOnSourceElement(elt, rule);
     result.push(...parsedElts);
   }
   return result;

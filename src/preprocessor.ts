@@ -19,14 +19,14 @@ const getStateLength = (r: State): number => {
   return r[0] instanceof Token ? 0 : r[0].text.length;
 };
 
-export const getNextState = (state: State, tokens: Rule[]) => {
+export const getNextState = (state: State, rules: Rule[]) => {
   const sourceElt = state[state.length - 1];
   if (!(sourceElt instanceof SourceElement)) {
     return state;
   }
 
-  const array = tokens
-    .map(token => applyRuleOnSourceElement(sourceElt, token, false))
+  const array = rules
+    .map(rule => applyRuleOnSourceElement(sourceElt, rule, false))
     .reduce(
       (acc, r) => {
         // min calc

@@ -9,14 +9,8 @@ var x = 3;
 var y = 52;
 `;
 
-    const tokens = [
-      blank,
-      ...keywords,
-      ...operators,
-      ...separators,
-      identifier,
-    ];
-    const tokenSequence = new Lexer(tokens).tokenize(str);
+    const rules = [blank, ...keywords, ...operators, ...separators, identifier];
+    const tokenSequence = new Lexer(rules).tokenize(str);
     const expectedTokenSequence = [
       {
         name: 'var',

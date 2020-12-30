@@ -22,7 +22,7 @@ a multi line comment with var x = 56 */
 var y = /* in the middle of an instruction */ 52;
 `;
 
-    const tokens = [
+    const rules = [
       multiLineComment,
       monolineComment,
       blank,
@@ -31,7 +31,7 @@ var y = /* in the middle of an instruction */ 52;
       ...separators,
       identifier,
     ];
-    const tokenSequence = new Lexer(tokens).tokenize(str);
+    const tokenSequence = new Lexer(rules).tokenize(str);
     const expectedTokenSequence = [
       {
         name: 'var',
