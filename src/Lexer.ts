@@ -1,20 +1,20 @@
 import {TokenElement} from './interfaces/TokenElement';
-import {TokenInstanceObject} from './interfaces/TokenInstanceObject';
+import {TokenObject} from './interfaces/TokenInstanceObject';
 import {applyTokenOnSourceElement} from './misc';
 import {preprocess} from './preprocessor';
 import {SourceElement} from './SourceElement';
+import {Rule} from './Rule';
 import {Token} from './Token';
-import {TokenInstance} from './TokenInstance';
 
 export class Lexer {
-  tokens: Token[];
-  preprocessToken: Token[];
-  constructor(tokens: Token[]) {
+  tokens: Rule[];
+  preprocessToken: Rule[];
+  constructor(tokens: Rule[]) {
     this.tokens = tokens.filter(t => t.preprocess === false);
     this.preprocessToken = tokens.filter(t => t.preprocess === true);
   }
 
-  tokenize(source: string): TokenInstanceObject[] {
+  tokenize(source: string): TokenObject[] {
     const src = source.replace(/\r\n/g, '\n');
     const srcElt = new SourceElement(src, {line: 1, col: 1});
     const initialState: TokenElement[] = [srcElt];
@@ -28,11 +28,11 @@ export class Lexer {
     }
     const finalState = checkAllIsTokenized(state);
 
-    return finalState.map(ti => ti.getValue()) as TokenInstance[];
+    return finalState.map(ti => ti.toObject()) as Token[];
   }
 }
 
-const checkAllIsTokenized = (state: TokenElement[]): TokenInstance[] => {
+const checkAllIsTokenized = (state: TokenElement[]): Token[] => {
   return state.map(te => {
     if (te instanceof SourceElement) {
       throw new Error(
@@ -46,7 +46,7 @@ const checkAllIsTokenized = (state: TokenElement[]): TokenInstance[] => {
 const hasSource = (state: TokenElement[]) =>
   state.find(elt => elt instanceof SourceElement) !== undefined;
 
-const applyToken = (elts: TokenElement[], token: Token): TokenElement[] => {
+const applyToken = (elts: TokenElement[], token: Rule): TokenElement[] => {
   const result: TokenElement[] = [];
 
   for (let i = 0; i < elts.length; i++) {

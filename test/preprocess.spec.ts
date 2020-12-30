@@ -24,7 +24,7 @@ var a = \`
 \`
 `;
 
-    const tokens = [
+    const rules = [
       multiLineComment,
       monolineComment,
       multilineString,
@@ -34,7 +34,7 @@ var a = \`
       ...separators,
       identifier,
     ];
-    const tokenSequence = new Lexer(tokens).tokenize(str);
+    const tokenSequence = new Lexer(rules).tokenize(str);
     const expectedTokenSequence = [
       {
         name: 'multiline comment',

@@ -1,8 +1,8 @@
 import {Position} from './interfaces/Position';
 import {TokenElement} from './interfaces/TokenElement';
 import {SourceElement} from './SourceElement';
+import {Rule} from './Rule';
 import {Token} from './Token';
-import {TokenInstance} from './TokenInstance';
 
 export const positionAdd = (pos: Position, str: string): Position => {
   const lines = str.split('\n');
@@ -17,7 +17,7 @@ export const positionAdd = (pos: Position, str: string): Position => {
 
 export const applyTokenOnSourceElement = (
   elt: SourceElement,
-  token: Token,
+  token: Rule,
   global = true
 ): TokenElement[] => {
   // remove empty line from tokenize.
@@ -42,9 +42,7 @@ export const applyTokenOnSourceElement = (
     result.push(new SourceElement(prefix, posStart));
   }
   if (!token.ignore) {
-    result.push(
-      new TokenInstance(token.name, matched[0], token.group, posMatch)
-    );
+    result.push(new Token(token.name, matched[0], token.group, posMatch));
   }
   const remainingIndex = matched.index + matched[0].length;
 

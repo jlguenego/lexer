@@ -1,4 +1,4 @@
 import {SourceElement} from '../SourceElement';
-import {TokenInstance} from '../TokenInstance';
+import {Token} from '../Token';
 
-export type TokenElement = SourceElement | TokenInstance;
+export type TokenElement = SourceElement | Token;

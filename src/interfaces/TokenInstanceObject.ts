@@ -1,7 +1,7 @@
 import {Group} from '../Group';
 import {Position} from './Position';
 
-export interface TokenInstanceObject {
+export interface TokenObject {
   name: string;
   value: string;
   group: Group;
