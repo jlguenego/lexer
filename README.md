@@ -132,6 +132,7 @@ tokenSequence: [
 - Refactor token in rules
 - Test comment : monoline, multiline.
 - Explain how it is working.
+- ESM module
 
 ## Author
 
