@@ -1,6 +1,14 @@
 import assert from 'assert';
 import {Lexer} from '../src/index';
-import {blank, identifier, keywords, operators, separators} from './lib/Tokens';
+import {
+  blank,
+  identifier,
+  keywords,
+  monolineComment,
+  multiLineComment,
+  operators,
+  separators,
+} from './lib/Tokens';
 
 describe('Comment Unit Test', () => {
   it('simple comment', () => {
@@ -13,15 +21,6 @@ var x = 3; // ok super
 a multi line comment with var x = 56 */
 var y = /* in the middle of an instruction */ 52;
 `;
-
-    const multiLineComment = Lexer.createToken({
-      name: 'monoline comment 2',
-      pattern: /[/][*].*?[*][/]/,
-    });
-    const monolineComment = Lexer.createToken({
-      name: 'monoline comment',
-      pattern: /[/][/].*\n/,
-    });
 
     const tokens = [
       multiLineComment,
@@ -71,13 +70,13 @@ var y = /* in the middle of an instruction */ 52;
         position: {line: 2, col: 12},
       },
       {
-        name: 'monoline comment 2',
+        name: 'multiline comment',
         value: '/* ok */',
         group: '',
         position: {line: 5, col: 1},
       },
       {
-        name: 'monoline comment 2',
+        name: 'multiline comment',
         value: '/* this is\na multi line comment with var x = 56 */',
         group: '',
         position: {line: 6, col: 1},
@@ -101,7 +100,7 @@ var y = /* in the middle of an instruction */ 52;
         position: {line: 8, col: 7},
       },
       {
-        name: 'monoline comment 2',
+        name: 'multiline comment',
         value: '/* in the middle of an instruction */',
         group: '',
         position: {line: 8, col: 9},

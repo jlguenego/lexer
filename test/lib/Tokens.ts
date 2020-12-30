@@ -1,5 +1,21 @@
 import {Group, Lexer} from '../../src';
 
+export const multiLineComment = Lexer.createToken({
+  name: 'multiline comment',
+  pattern: /[/][*].*?[*][/]/,
+});
+
+export const monolineComment = Lexer.createToken({
+  name: 'monoline comment',
+  pattern: /[/][/].*\n/,
+});
+
+export const monolineString = Lexer.createToken({
+  name: 'monoline string',
+  // this regexp contains a negative lookbehind
+  pattern: /"[^\n]*?(?<!\\)"/,
+});
+
 export const blank = Lexer.createToken({
   name: 'blank',
   pattern: /\s+/,
@@ -7,6 +23,7 @@ export const blank = Lexer.createToken({
 });
 
 export const keywords = Lexer.createKeywordTokens(['var']);
+
 export const operators = Lexer.createOperatorTokens([
   {
     name: 'equal',
