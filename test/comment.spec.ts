@@ -9,6 +9,8 @@ var x = 3; // ok super
 // yes, good. // yes again
 // yes again again
 /* ok */
+/* this is
+a multi line comment with var x = 56 */
 var y = /* in the middle of an instruction */ 52;
 `;
 
@@ -64,21 +66,9 @@ var y = /* in the middle of an instruction */ 52;
       },
       {
         name: 'monoline comment',
-        value: '// ok super\n',
+        value: '// ok super\n// yes, good. // yes again\n// yes again again\n',
         group: '',
         position: {line: 2, col: 12},
-      },
-      {
-        name: 'monoline comment',
-        value: '// yes, good. // yes again\n',
-        group: '',
-        position: {line: 3, col: 1},
-      },
-      {
-        name: 'monoline comment',
-        value: '// yes again again\n',
-        group: '',
-        position: {line: 4, col: 1},
       },
       {
         name: 'monoline comment 2',
@@ -87,40 +77,46 @@ var y = /* in the middle of an instruction */ 52;
         position: {line: 5, col: 1},
       },
       {
+        name: 'monoline comment 2',
+        value: '/* this is\na multi line comment with var x = 56 */',
+        group: '',
+        position: {line: 6, col: 1},
+      },
+      {
         name: 'var',
         value: 'var',
         group: 'keyword',
-        position: {line: 6, col: 1},
+        position: {line: 8, col: 1},
       },
       {
         name: 'identifier',
         value: 'y',
         group: 'identifier',
-        position: {line: 6, col: 5},
+        position: {line: 8, col: 5},
       },
       {
         name: 'equal',
         value: '=',
         group: 'operator',
-        position: {line: 6, col: 7},
+        position: {line: 8, col: 7},
       },
       {
         name: 'monoline comment 2',
         value: '/* in the middle of an instruction */',
         group: '',
-        position: {line: 6, col: 9},
+        position: {line: 8, col: 9},
       },
       {
         name: 'identifier',
         value: '52',
         group: 'identifier',
-        position: {line: 6, col: 47},
+        position: {line: 8, col: 47},
       },
       {
         name: 'semi-column',
         value: ';',
         group: 'separator',
-        position: {line: 6, col: 49},
+        position: {line: 8, col: 49},
       },
     ];
     assert.deepStrictEqual(tokenSequence, expectedTokenSequence);

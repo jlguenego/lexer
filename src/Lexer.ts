@@ -54,12 +54,22 @@ export class Lexer {
       state = applyToken(state, token);
       tokenIndex++;
     }
+    const finalState = checkAllIsTokenized(state);
 
-    return (state as TokenInstance[]).map(ti =>
-      ti.getValue()
-    ) as TokenInstance[];
+    return finalState.map(ti => ti.getValue()) as TokenInstance[];
   }
 }
+
+const checkAllIsTokenized = (state: TokenElement[]): TokenInstance[] => {
+  return state.map(te => {
+    if (te instanceof SourceElement) {
+      throw new Error(
+        `Did not tokenize everything: '${te.text}' at line ${te.position.line} and col ${te.position.col}`
+      );
+    }
+    return te;
+  });
+};
 
 const hasSource = (state: TokenElement[]) =>
   state.find(elt => elt instanceof SourceElement) !== undefined;
@@ -87,7 +97,7 @@ const applyTokenOnSourceElement = (
   if (elt.text.length === 0) {
     return [];
   }
-  const matched = elt.text.match(new RegExp(token.pattern));
+  const matched = elt.text.match(new RegExp(token.pattern, 's'));
   if (!matched) {
     return [elt];
   }
