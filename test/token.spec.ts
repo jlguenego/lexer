@@ -3,7 +3,7 @@ import {Lexer} from '../src/index';
 import {blank, identifier, keywords, operators, separators} from './lib/Tokens';
 
 describe('First Unit Test', () => {
-  it('should test', () => {
+  it('simple token', () => {
     const str = `
 var x = 3;
 var y = 52;

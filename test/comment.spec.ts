@@ -65,9 +65,21 @@ var y = /* in the middle of an instruction */ 52;
       },
       {
         name: 'monoline comment',
-        value: '// ok super\n// yes, good. // yes again\n// yes again again\n',
+        value: '// ok super\n',
         group: '',
         position: {line: 2, col: 12},
+      },
+      {
+        name: 'monoline comment',
+        value: '// yes, good. // yes again\n',
+        group: '',
+        position: {line: 3, col: 1},
+      },
+      {
+        name: 'monoline comment',
+        value: '// yes again again\n',
+        group: '',
+        position: {line: 4, col: 1},
       },
       {
         name: 'multiline comment',

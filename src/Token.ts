@@ -5,6 +5,7 @@ export interface TokenSpec {
   pattern: RegExp | string;
   ignore?: boolean;
   group?: Group;
+  preprocess?: boolean;
 }
 
 export class Token {
@@ -23,15 +24,13 @@ export class Token {
     return array.map(spec => new Token({group, ...spec}));
   }
 
-  ignore: boolean;
-  group: Group;
-  pattern: RegExp | string;
-  name: string;
+  name = '';
+  pattern: RegExp | string = '';
+  ignore = false;
+  group = Group.NONE;
+  preprocess = false;
 
   constructor(spec: TokenSpec) {
-    this.name = spec.name;
-    this.pattern = spec.pattern;
-    this.ignore = spec.ignore || false;
-    this.group = spec.group || Group.NONE;
+    Object.assign(this, spec);
   }
 }

@@ -10,8 +10,8 @@ import {
   separators,
 } from './lib/Tokens';
 
-describe('Comment Unit Test', () => {
-  it('simple comment', () => {
+describe('Preprocess Unit Test', () => {
+  it('should preprocess', () => {
     const str = `
 /* this is
 var a = \`

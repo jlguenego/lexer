@@ -11,8 +11,8 @@ import {
   separators,
 } from './lib/Tokens';
 
-describe('Comment Unit Test', () => {
-  it('simple comment', () => {
+describe('String Unit Test', () => {
+  it('simple string', () => {
     const str = `
 var x = "this include double quote \\".";
 `;
