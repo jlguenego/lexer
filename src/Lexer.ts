@@ -7,9 +7,9 @@ import {tokenize} from './process';
 export class Lexer {
   rules: Rule[];
   preprocessRules: Rule[];
-  constructor(tokens: Rule[]) {
-    this.rules = tokens.filter(t => t.preprocess === false);
-    this.preprocessRules = tokens.filter(t => t.preprocess === true);
+  constructor(rules: Rule[]) {
+    this.rules = rules.filter(t => t.preprocess === false);
+    this.preprocessRules = rules.filter(t => t.preprocess === true);
   }
 
   tokenize(source: string): TokenObjectSequence {

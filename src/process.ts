@@ -6,11 +6,11 @@ import {SourceElement} from './SourceElement';
 import {Token} from './Token';
 
 export const tokenize = (state: State, rules: Rule[]): TokenObjectSequence => {
-  let tokenIndex = 0;
-  while (hasSource(state) && tokenIndex < rules.length) {
-    const token = rules[tokenIndex];
-    state = applyToken(state, token);
-    tokenIndex++;
+  let ruleIndex = 0;
+  while (hasSource(state) && ruleIndex < rules.length) {
+    const rule = rules[ruleIndex];
+    state = applyRule(state, rule);
+    ruleIndex++;
   }
   const finalState = convertToTokenSequence(state);
 
@@ -31,7 +31,7 @@ export const convertToTokenSequence = (state: State): Token[] => {
   });
 };
 
-const applyToken = (elts: State, token: Rule): State => {
+const applyRule = (elts: State, token: Rule): State => {
   const result: State = [];
 
   for (let i = 0; i < elts.length; i++) {

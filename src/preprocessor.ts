@@ -4,12 +4,12 @@ import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
 import {Token} from './Token';
 
-export const preprocess = (initialState: State, tokens: Rule[]): State => {
+export const preprocess = (initialState: State, rules: Rule[]): State => {
   let previousState: State = [];
   let state: State = initialState;
   while (state !== previousState) {
     previousState = state;
-    state = getNextState(previousState, tokens);
+    state = getNextState(previousState, rules);
   }
 
   return state;
