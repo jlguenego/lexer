@@ -8,7 +8,7 @@ import {
   multiLineComment,
   operators,
   separators,
-} from './lib/Tokens';
+} from './lib/Rules';
 
 describe('Comment Unit Test', () => {
   it('simple comment', () => {

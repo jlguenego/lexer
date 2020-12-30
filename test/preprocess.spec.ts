@@ -9,7 +9,7 @@ import {
   multilineString,
   operators,
   separators,
-} from './lib/Tokens';
+} from './lib/Rules';
 
 describe('Preprocess Unit Test', () => {
   it('should preprocess', () => {

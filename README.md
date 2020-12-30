@@ -129,7 +129,7 @@ tokenSequence: [
 
 ## Other Examples
 
-- Monoline comment.
+- See the (mocha test)[./test/].
 
 ## TODO
 

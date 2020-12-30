@@ -1,6 +1,6 @@
 import assert from 'assert';
 import {Lexer} from '../src/index';
-import {blank, identifier, keywords, operators, separators} from './lib/Tokens';
+import {blank, identifier, keywords, operators, separators} from './lib/Rules';
 
 describe('First Unit Test', () => {
   it('simple token', () => {

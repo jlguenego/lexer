@@ -9,7 +9,7 @@ import {
   multiLineComment,
   operators,
   separators,
-} from './lib/Tokens';
+} from './lib/Rules';
 
 describe('String Unit Test', () => {
   it('simple string', () => {
