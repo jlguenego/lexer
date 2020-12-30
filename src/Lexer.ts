@@ -1,62 +1,31 @@
-import {TokenElement} from './interfaces/TokenElement';
-import {TokenObject} from './interfaces/TokenInstanceObject';
-import {applyTokenOnSourceElement} from './misc';
+import {TokenObjectSequence} from './interfaces/TokenInstanceObject';
 import {preprocess} from './preprocessor';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
-import {Token} from './Token';
+import {tokenize} from './process';
 
 export class Lexer {
-  tokens: Rule[];
-  preprocessToken: Rule[];
+  rules: Rule[];
+  preprocessRules: Rule[];
   constructor(tokens: Rule[]) {
-    this.tokens = tokens.filter(t => t.preprocess === false);
-    this.preprocessToken = tokens.filter(t => t.preprocess === true);
+    this.rules = tokens.filter(t => t.preprocess === false);
+    this.preprocessRules = tokens.filter(t => t.preprocess === true);
   }
 
-  tokenize(source: string): TokenObject[] {
+  tokenize(source: string): TokenObjectSequence {
+    // convert string to UNIX format.
     const src = source.replace(/\r\n/g, '\n');
-    const srcElt = new SourceElement(src, {line: 1, col: 1});
-    const initialState: TokenElement[] = [srcElt];
 
-    let state = preprocess(initialState, this.preprocessToken);
-    let tokenIndex = 0;
-    while (hasSource(state) && tokenIndex < this.tokens.length) {
-      const token = this.tokens[tokenIndex];
-      state = applyToken(state, token);
-      tokenIndex++;
-    }
-    const finalState = checkAllIsTokenized(state);
+    // preprocess phase : rule are all applied according
+    // a cursor going from the beginning to the end of the source code.
+    // slow. To be used for rules that cannot be well applied in the process phase.
+    const state = preprocess(
+      [new SourceElement(src, {line: 1, col: 1})],
+      this.preprocessRules
+    );
 
-    return finalState.map(ti => ti.toObject()) as Token[];
+    // tokenize main phase: rules are applied in order of the rules sequence given in input.
+    // this is fast and compliant with most of the rules.
+    return tokenize(state, this.rules);
   }
 }
-
-const checkAllIsTokenized = (state: TokenElement[]): Token[] => {
-  return state.map(te => {
-    if (te instanceof SourceElement) {
-      throw new Error(
-        `Did not tokenize everything: '${te.text}' at line ${te.position.line} and col ${te.position.col}`
-      );
-    }
-    return te;
-  });
-};
-
-const hasSource = (state: TokenElement[]) =>
-  state.find(elt => elt instanceof SourceElement) !== undefined;
-
-const applyToken = (elts: TokenElement[], token: Rule): TokenElement[] => {
-  const result: TokenElement[] = [];
-
-  for (let i = 0; i < elts.length; i++) {
-    const elt = elts[i];
-    if (!(elt instanceof SourceElement)) {
-      result.push(elt);
-      continue;
-    }
-    const parsedElts = applyTokenOnSourceElement(elt, token);
-    result.push(...parsedElts);
-  }
-  return result;
-};
