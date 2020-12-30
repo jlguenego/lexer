@@ -1,45 +1,11 @@
-import {Group} from './Group';
-import {
-  Position,
-  Token,
-  TokenElement,
-  TokenInstanceObject,
-  TokenSpec,
-} from './interfaces/Token';
+import {Position} from './interfaces/Position';
+import {TokenElement} from './interfaces/TokenElement';
+import {TokenInstanceObject} from './interfaces/TokenInstanceObject';
 import {SourceElement} from './SourceElement';
+import {Token} from './Token';
 import {TokenInstance} from './TokenInstance';
 
 export class Lexer {
-  static createToken(spec: TokenSpec) {
-    const token: Token = {
-      ignore: false,
-      group: Group.NONE,
-      ...spec,
-    };
-    return token;
-  }
-
-  static createKeywordTokens(array: string[]) {
-    return array.map(str =>
-      Lexer.createToken({
-        name: str,
-        pattern: new RegExp(str),
-        group: Group.KEYWORD,
-      })
-    );
-  }
-
-  static createOperatorTokens(array: TokenSpec[]) {
-    return array.map(spec =>
-      Lexer.createToken({group: Group.OPERATOR, ...spec})
-    );
-  }
-  static createSeparatorTokens(array: TokenSpec[]) {
-    return array.map(spec =>
-      Lexer.createToken({group: Group.SEPARATOR, ...spec})
-    );
-  }
-
   constructor(public tokens: Token[]) {}
 
   tokenize(source: string): TokenInstanceObject[] {

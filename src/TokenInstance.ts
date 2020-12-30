@@ -1,5 +1,6 @@
 import {Group} from './Group';
-import {Position, TokenInstanceObject} from './interfaces/Token';
+import {Position} from './interfaces/Position';
+import {TokenInstanceObject} from './interfaces/TokenInstanceObject';
 
 export class TokenInstance {
   constructor(

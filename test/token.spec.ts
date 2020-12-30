@@ -1,6 +1,6 @@
 import assert from 'assert';
-import {Group} from '../src/Group';
 import {Lexer} from '../src/index';
+import {blank, identifier, keywords, operators, separators} from './lib/Tokens';
 
 describe('First Unit Test', () => {
   it('should test', () => {
@@ -8,29 +8,6 @@ describe('First Unit Test', () => {
 var x = 3;
 var y = 52;
 `;
-    const blank = Lexer.createToken({
-      name: 'blank',
-      pattern: /\s+/,
-      ignore: true,
-    });
-    const keywords = Lexer.createKeywordTokens(['var']);
-    const operators = Lexer.createOperatorTokens([
-      {
-        name: 'equal',
-        pattern: '=',
-      },
-    ]);
-    const separators = Lexer.createSeparatorTokens([
-      {
-        name: 'semi-column',
-        pattern: ';',
-      },
-    ]);
-    const identifier = Lexer.createToken({
-      name: 'identifier',
-      pattern: /\w+/,
-      group: Group.IDENTIFIER,
-    });
 
     const tokens = [
       blank,
