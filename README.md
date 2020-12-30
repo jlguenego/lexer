@@ -132,6 +132,7 @@ tokenSequence: [
 - Test with ASN.1 language.
 - Test comment : monoline, multiline.
 - String with "", '', "\"", etc.
+- Token with same priority (first index is priority)
 
 ## Author
 
