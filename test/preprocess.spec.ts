@@ -35,7 +35,6 @@ var a = \`
       identifier,
     ];
     const tokenSequence = new Lexer(tokens).tokenize(str);
-    console.log('tokenSequence: ', tokenSequence);
     const expectedTokenSequence = [
       {
         name: 'multiline comment',
