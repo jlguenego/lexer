@@ -29,7 +29,7 @@ export const getNextState = (state: TokenElement[], tokens: Token[]) => {
   }
 
   const array = tokens
-    .map(token => applyTokenOnSourceElement(sourceElt, token))
+    .map(token => applyTokenOnSourceElement(sourceElt, token, false))
     .reduce(
       (acc, r) => {
         // min calc

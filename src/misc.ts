@@ -17,7 +17,8 @@ export const positionAdd = (pos: Position, str: string): Position => {
 
 export const applyTokenOnSourceElement = (
   elt: SourceElement,
-  token: Token
+  token: Token,
+  global = true
 ): TokenElement[] => {
   // remove empty line from tokenize.
   if (elt.text.length === 0) {
@@ -46,13 +47,12 @@ export const applyTokenOnSourceElement = (
     );
   }
   const remainingIndex = matched.index + matched[0].length;
+
   if (remainingIndex < elt.text.length) {
-    result.push(
-      ...applyTokenOnSourceElement(
-        new SourceElement(elt.text.substr(remainingIndex), posSuffix),
-        token
-      )
-    );
+    const se = new SourceElement(elt.text.substr(remainingIndex), posSuffix);
+    const array = global ? applyTokenOnSourceElement(se, token) : [se];
+    result.push(...array);
   }
+
   return result;
 };

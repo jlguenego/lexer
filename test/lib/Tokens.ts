@@ -13,9 +13,9 @@ export const monolineComment = new Token({
 });
 
 export const multilineString = new Token({
-  name: 'monoline string',
+  name: 'multiline string',
   // this regexp contains a negative lookbehind
-  pattern: /"[^\n]*?(?<!\\)"/,
+  pattern: /`.*?(?<!\\)`/,
   preprocess: true,
 });
 

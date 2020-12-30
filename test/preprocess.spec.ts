@@ -6,6 +6,7 @@ import {
   keywords,
   monolineComment,
   multiLineComment,
+  multilineString,
   operators,
   separators,
 } from './lib/Tokens';
@@ -26,6 +27,7 @@ var a = \`
     const tokens = [
       multiLineComment,
       monolineComment,
+      multilineString,
       blank,
       ...keywords,
       ...operators,
@@ -33,90 +35,37 @@ var a = \`
       identifier,
     ];
     const tokenSequence = new Lexer(tokens).tokenize(str);
+    console.log('tokenSequence: ', tokenSequence);
     const expectedTokenSequence = [
       {
-        name: 'var',
-        value: 'var',
-        group: 'keyword',
+        name: 'multiline comment',
+        value: '/* this is\nvar a = `\nhey\n`\n*/',
+        group: '',
         position: {line: 2, col: 1},
       },
       {
-        name: 'identifier',
-        value: 'x',
-        group: 'identifier',
-        position: {line: 2, col: 5},
-      },
-      {
-        name: 'equal',
-        value: '=',
-        group: 'operator',
-        position: {line: 2, col: 7},
-      },
-      {
-        name: 'identifier',
-        value: '3',
-        group: 'identifier',
-        position: {line: 2, col: 9},
-      },
-      {
-        name: 'semi-column',
-        value: ';',
-        group: 'separator',
-        position: {line: 2, col: 10},
-      },
-      {
-        name: 'monoline comment',
-        value: '// ok super\n// yes, good. // yes again\n// yes again again\n',
-        group: '',
-        position: {line: 2, col: 12},
-      },
-      {
-        name: 'multiline comment',
-        value: '/* ok */',
-        group: '',
-        position: {line: 5, col: 1},
-      },
-      {
-        name: 'multiline comment',
-        value: '/* this is\na multi line comment with var x = 56 */',
-        group: '',
-        position: {line: 6, col: 1},
-      },
-      {
         name: 'var',
         value: 'var',
         group: 'keyword',
-        position: {line: 8, col: 1},
+        position: {line: 7, col: 1},
       },
       {
         name: 'identifier',
-        value: 'y',
+        value: 'a',
         group: 'identifier',
-        position: {line: 8, col: 5},
+        position: {line: 7, col: 5},
       },
       {
         name: 'equal',
         value: '=',
         group: 'operator',
-        position: {line: 8, col: 7},
+        position: {line: 7, col: 7},
       },
       {
-        name: 'multiline comment',
-        value: '/* in the middle of an instruction */',
+        name: 'multiline string',
+        value: '`\n/* hello */\n`',
         group: '',
-        position: {line: 8, col: 9},
-      },
-      {
-        name: 'identifier',
-        value: '52',
-        group: 'identifier',
-        position: {line: 8, col: 47},
-      },
-      {
-        name: 'semi-column',
-        value: ';',
-        group: 'separator',
-        position: {line: 8, col: 49},
+        position: {line: 7, col: 9},
       },
     ];
     assert.deepStrictEqual(tokenSequence, expectedTokenSequence);
