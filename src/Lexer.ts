@@ -1,5 +1,6 @@
 import {Group} from './Group';
 import {
+  Position,
   Token,
   TokenElement,
   TokenInstanceObject,
@@ -42,10 +43,10 @@ export class Lexer {
   constructor(public tokens: Token[]) {}
 
   tokenize(source: string): TokenInstanceObject[] {
-    const lineElts = source
-      .split(/\r?\n/)
-      .map((line, i) => new SourceElement(line, {col: 1, line: i + 1}));
-    const initialState: TokenElement[] = lineElts;
+    const src = source.replace(/\r\n/g, '\n');
+    const srcElt = new SourceElement(src, {line: 1, col: 1});
+    const initialState: TokenElement[] = [srcElt];
+
     let state = initialState;
     let tokenIndex = 0;
     while (hasSource(state) && tokenIndex < this.tokens.length) {
@@ -65,20 +66,23 @@ const hasSource = (state: TokenElement[]) =>
 
 const applyToken = (elts: TokenElement[], token: Token): TokenElement[] => {
   const result: TokenElement[] = [];
+
   for (let i = 0; i < elts.length; i++) {
-    const parsedElts = applyTokenOnTokenElement(elts[i], token);
+    const elt = elts[i];
+    if (!(elt instanceof SourceElement)) {
+      result.push(elt);
+      continue;
+    }
+    const parsedElts = applyTokenOnSourceElement(elt, token);
     result.push(...parsedElts);
   }
   return result;
 };
 
-const applyTokenOnTokenElement = (
-  elt: TokenElement,
+const applyTokenOnSourceElement = (
+  elt: SourceElement,
   token: Token
 ): TokenElement[] => {
-  if (!(elt instanceof SourceElement)) {
-    return [elt];
-  }
   // remove empty line from tokenize.
   if (elt.text.length === 0) {
     return [];
@@ -93,33 +97,37 @@ const applyTokenOnTokenElement = (
       'matched exists and index not present. Case not implemented.'
     );
   }
+  const prefix = elt.text.substr(0, matched.index);
+  const posStart = elt.position;
+  const posMatch = positionAdd(posStart, prefix);
+  const posSuffix = positionAdd(posMatch, matched[0]);
   if (matched.index > 0) {
-    result.push(
-      new SourceElement(elt.text.substr(0, matched.index), {
-        col: elt.position.col,
-        line: elt.position.line,
-      })
-    );
+    result.push(new SourceElement(prefix, posStart));
   }
   if (!token.ignore) {
     result.push(
-      new TokenInstance(token.name, matched[0], token.group, {
-        col: elt.position.col + matched.index,
-        line: elt.position.line,
-      })
+      new TokenInstance(token.name, matched[0], token.group, posMatch)
     );
   }
   const remainingIndex = matched.index + matched[0].length;
   if (remainingIndex < elt.text.length) {
     result.push(
-      ...applyTokenOnTokenElement(
-        new SourceElement(elt.text.substr(remainingIndex), {
-          col: elt.position.col + matched.index + matched[0].length,
-          line: elt.position.line,
-        }),
+      ...applyTokenOnSourceElement(
+        new SourceElement(elt.text.substr(remainingIndex), posSuffix),
         token
       )
     );
   }
   return result;
+};
+
+const positionAdd = (pos: Position, str: string): Position => {
+  const lines = str.split('\n');
+  if (lines.length === 1) {
+    return {line: pos.line, col: pos.col + str.length};
+  }
+  return {
+    line: pos.line + lines.length - 1,
+    col: lines[lines.length - 1].length + 1,
+  };
 };
