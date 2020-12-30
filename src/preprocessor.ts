@@ -15,7 +15,7 @@ export const preprocess = (initialState: State, tokens: Rule[]): State => {
   return state;
 };
 
-const getLength = (r: State): number => {
+const getStateLength = (r: State): number => {
   return r[0] instanceof Token ? 0 : r[0].text.length;
 };
 
@@ -30,9 +30,7 @@ export const getNextState = (state: State, tokens: Rule[]) => {
     .reduce(
       (acc, r) => {
         // min calc
-        const rLength = getLength(r);
-        const accLength = getLength(acc);
-        return rLength < accLength ? r : acc;
+        return getStateLength(r) < getStateLength(acc) ? r : acc;
       },
       [sourceElt] as State
     );
