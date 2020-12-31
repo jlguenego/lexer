@@ -142,9 +142,9 @@ so it is recommanded to place them at the end of the rule list.
 
 This module is written in Typescript and ready to be used in Typescript without separate typing module.
 
-## TODO
+## Modules
 
-- ESM module
+This modules exports both a CommonJS module and ES2015 module.
 
 ## Thanks
 
