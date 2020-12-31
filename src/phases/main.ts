@@ -4,6 +4,17 @@ import {applyRuleOnSourceElement} from '../tools/apply-rule';
 import {Rule} from '../Rule';
 import {SourceElement} from '../SourceElement';
 
+/**
+ * Lexer main phase: rules are applied in order of the rules sequence given in input.
+ * This is fast and compliant with most of the rules.
+ *
+ * But some rules (string, comment) cannot be well processed when nested.
+ * Theses rules must be applied in the preprocess phase.
+ *
+ * @param {State} state
+ * @param {Rule[]} rules
+ * @returns {TokenSequence}
+ */
 export const mainPhase = (state: State, rules: Rule[]): TokenSequence => {
   for (const rule of rules) {
     if (!hasSource(state)) {

@@ -20,8 +20,6 @@ export class Lexer {
       this.preprocessRules
     );
 
-    // tokenize main phase: rules are applied in order of the rules sequence given in input.
-    // this is fast and compliant with most of the rules.
     return mainPhase(state, this.rules);
   }
 }
