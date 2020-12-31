@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/jlguenego/lexer/compare/v1.1.2...v1.2.0) (2020-12-31)
+
+
+### Features
+
+* added monoline string ([126624e](https://github.com/jlguenego/lexer/commit/126624e5ceb44f950c1a0d9c0c0c7a0678c0dca3))
+* added preprocessor ([02ff78a](https://github.com/jlguenego/lexer/commit/02ff78a9378db131169ac9e5136d5d09f599504e))
+
+
+### Bug Fixes
+
+* added s for regexp (dot for multiline) ([e9021ed](https://github.com/jlguenego/lexer/commit/e9021edd71cf572809105e427562c796c1795463))
+* all test ok ([c03d3d0](https://github.com/jlguenego/lexer/commit/c03d3d0b9c1e45fcf0204291d2b3b7768837f5f1))
+* error msg ([cd03d7f](https://github.com/jlguenego/lexer/commit/cd03d7ffccbcd2254e0a3f3c1fe55e2c3193e251))
+
 ### [1.1.2](https://github.com/jlguenego/lexer/compare/v1.1.1...v1.1.2) (2020-12-29)
 
 
