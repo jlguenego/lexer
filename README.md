@@ -144,9 +144,7 @@ This module is written in Typescript and ready to be used in Typescript without 
 
 ## TODO
 
-- Explain how it is working.
 - ESM module
-- Refactor with rafactoring.guru
 
 ## Thanks
 
