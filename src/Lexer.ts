@@ -1,8 +1,8 @@
 import {TokenSequence} from './interfaces/Token';
-import {preprocess} from './preprocessor';
+import {preprocessorPhase} from './phases/preprocessor';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
-import {tokenize} from './process';
+import {mainPhase} from './phases/main';
 
 export class Lexer {
   rules: Rule[];
@@ -19,13 +19,13 @@ export class Lexer {
     // preprocess phase : rule are all applied according
     // a cursor going from the beginning to the end of the source code.
     // slow. To be used for rules that cannot be well applied in the process phase.
-    const state = preprocess(
+    const state = preprocessorPhase(
       [new SourceElement(src, {line: 1, col: 1})],
       this.preprocessRules
     );
 
     // tokenize main phase: rules are applied in order of the rules sequence given in input.
     // this is fast and compliant with most of the rules.
-    return tokenize(state, this.rules);
+    return mainPhase(state, this.rules);
   }
 }

@@ -1,9 +1,12 @@
-import {State} from './interfaces/State';
-import {applyRuleOnSourceElement} from './tools/apply-rule';
-import {SourceElement} from './SourceElement';
-import {Rule} from './Rule';
+import {State} from '../interfaces/State';
+import {applyRuleOnSourceElement} from '../tools/apply-rule';
+import {SourceElement} from '../SourceElement';
+import {Rule} from '../Rule';
 
-export const preprocess = (initialState: State, rules: Rule[]): State => {
+export const preprocessorPhase = (
+  initialState: State,
+  rules: Rule[]
+): State => {
   let previousState: State = [];
   let state: State = initialState;
   while (state !== previousState) {
@@ -14,7 +17,7 @@ export const preprocess = (initialState: State, rules: Rule[]): State => {
   return state;
 };
 
-const getStateLength = (r: State): number => {
+const getPrefixLength = (r: State): number => {
   return r[0] instanceof SourceElement ? r[0].text.length : 0;
 };
 
@@ -24,17 +27,18 @@ export const getNextState = (state: State, rules: Rule[]) => {
     return state;
   }
 
-  const array = rules
+  const suffixState = rules
     .map(rule => applyRuleOnSourceElement(sourceElt, rule, false))
     .reduce(
       (acc, r) => {
-        // min calc
-        return getStateLength(r) < getStateLength(acc) ? r : acc;
+        // find the minimum size of the prefix
+        return getPrefixLength(r) < getPrefixLength(acc) ? r : acc;
       },
       [sourceElt] as State
     );
-  if (array[0] === sourceElt) {
+  if (suffixState[0] === sourceElt) {
     return state;
   }
-  return [...state.slice(0, -1), ...array];
+  // replace the last source element with the suffixState content.
+  return [...state.slice(0, -1), ...suffixState];
 };
