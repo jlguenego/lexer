@@ -1,4 +1,4 @@
-import {TokenObjectSequence} from './interfaces/TokenInstanceObject';
+import {TokenSequence} from './interfaces/TokenInstanceObject';
 import {preprocess} from './preprocessor';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
@@ -12,7 +12,7 @@ export class Lexer {
     this.preprocessRules = rules.filter(t => t.preprocess === true);
   }
 
-  tokenize(source: string): TokenObjectSequence {
+  tokenize(source: string): TokenSequence {
     // convert string to UNIX format.
     const src = source.replace(/\r\n/g, '\n');
 

@@ -1,10 +1,10 @@
 import {State} from './interfaces/State';
-import {Token, TokenObjectSequence} from './interfaces/TokenInstanceObject';
+import {Token, TokenSequence} from './interfaces/TokenInstanceObject';
 import {applyRuleOnSourceElement} from './misc';
 import {Rule} from './Rule';
 import {SourceElement} from './SourceElement';
 
-export const tokenize = (state: State, rules: Rule[]): TokenObjectSequence => {
+export const tokenize = (state: State, rules: Rule[]): TokenSequence => {
   let ruleIndex = 0;
   while (hasSource(state) && ruleIndex < rules.length) {
     const rule = rules[ruleIndex];
