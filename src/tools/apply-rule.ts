@@ -25,7 +25,28 @@ export const applyRuleOnSourceElement = (
   if (!matched) {
     return [elt];
   }
-  const state: State = [];
+  return applyMatchOnSourceElement(elt, rule, matched, matchAll);
+};
+
+/**
+ * Generate a state = [prefixSourceElt?, token, suffixSourceElt?].
+ * prefix and suffix are omitted if their text is empty.
+ *
+ * If matchAll then use recursivity to apply the rule everywhere it is possible in the source element.
+ * The output state = [se1, token, se2, token, se3, token, se4, ...]
+ *
+ * @param {SourceElement} elt
+ * @param {Rule} rule
+ * @param {RegExpMatchArray} matched
+ * @param {boolean} matchAll
+ * @returns {State}
+ */
+const applyMatchOnSourceElement = (
+  elt: SourceElement,
+  rule: Rule,
+  matched: RegExpMatchArray,
+  matchAll: boolean
+): State => {
   if (matched.index === undefined) {
     // this is to make pleasure to typescript.
     // But when we have a match we always have an index attribute.
@@ -34,13 +55,22 @@ export const applyRuleOnSourceElement = (
       'matched exists and index not present. Case not implemented.'
     );
   }
-  const prefix = elt.text.substr(0, matched.index);
+
+  const prefixText = elt.text.substr(0, matched.index);
+  const suffixText = elt.text.substr(matched.index + matched[0].length);
+
   const startPos = elt.position;
-  const matchPos = positionAdd(startPos, prefix);
+  const matchPos = positionAdd(startPos, prefixText);
   const suffixPos = positionAdd(matchPos, matched[0]);
-  if (matched.index > 0) {
-    state.push(new SourceElement(prefix, startPos));
+
+  const state: State = [];
+
+  // prefix
+  if (prefixText.length > 0) {
+    state.push(new SourceElement(prefixText, startPos));
   }
+
+  // token
   if (!rule.ignore) {
     // add the token in the state
     state.push({
@@ -50,10 +80,10 @@ export const applyRuleOnSourceElement = (
       position: matchPos,
     });
   }
-  const suffixIndex = matched.index + matched[0].length;
 
-  if (suffixIndex < elt.text.length) {
-    const se = new SourceElement(elt.text.substr(suffixIndex), suffixPos);
+  // suffix
+  if (suffixText.length > 0) {
+    const se = new SourceElement(suffixText, suffixPos);
     const array = matchAll ? applyRuleOnSourceElement(se, rule) : [se];
     state.push(...array);
   }
