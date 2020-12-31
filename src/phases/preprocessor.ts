@@ -13,7 +13,6 @@ export const preprocessorPhase = (
     previousState = state;
     state = getNextState(previousState, rules);
   }
-
   return state;
 };
 
