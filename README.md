@@ -97,7 +97,7 @@ TODO:
 ## Concepts
 
 This module purpose is to tokenize a source code input.
-In compurter science, this process is known under the term
+In computer science, this process is known under the term
 [lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis).
 We call it also a **lexer**.
 

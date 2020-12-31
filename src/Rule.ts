@@ -10,7 +10,9 @@ export interface RuleSpec {
   name: string;
 
   /**
-   * Regular expression specification
+   * Regular expression specification.
+   * Note that the regexp flags are ignored.
+   * There will be always replaced with the regexp 's' flag.
    *
    * @type {(RegExp | string)}
    * @memberof RuleSpec

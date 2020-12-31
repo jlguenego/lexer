@@ -3,7 +3,7 @@ import {SourceElement} from '../SourceElement';
 import {Rule} from '../Rule';
 import {positionAdd} from './position';
 
-export /**
+/**
  * Apply a rule on a source element.
  *
  * @param {SourceElement} elt
@@ -11,7 +11,7 @@ export /**
  * @param {boolean} [matchAll=true] if false, match the rule only once
  * @returns {State} An array of source fragment and token
  */
-const applyRuleOnSourceElement = (
+export const applyRuleOnSourceElement = (
   elt: SourceElement,
   rule: Rule,
   matchAll = true
@@ -20,6 +20,7 @@ const applyRuleOnSourceElement = (
   if (elt.text.length === 0) {
     return [];
   }
+  // building a new Regexp make the old flags completely ignored.
   const matched = elt.text.match(new RegExp(rule.pattern, 's'));
   if (!matched) {
     return [elt];
