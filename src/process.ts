@@ -28,11 +28,11 @@ export const convertToTokenSequence = (state: State): Token[] => {
   });
 };
 
-const applyRule = (elts: State, rule: Rule): State => {
+const applyRule = (state: State, rule: Rule): State => {
   const result: State = [];
 
-  for (let i = 0; i < elts.length; i++) {
-    const elt = elts[i];
+  for (let i = 0; i < state.length; i++) {
+    const elt = state[i];
     if (!(elt instanceof SourceElement)) {
       result.push(elt);
       continue;
