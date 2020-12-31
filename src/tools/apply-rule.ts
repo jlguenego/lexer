@@ -20,7 +20,7 @@ export const applyRuleOnSourceElement = (
   if (elt.text.length === 0) {
     return [];
   }
-  // building a new Regexp make the old flags completely ignored.
+  // building a new Regexp makes the old flags completely ignored.
   const matched = elt.text.match(new RegExp(rule.pattern, 's'));
   if (!matched) {
     return [elt];
@@ -49,11 +49,9 @@ const applyMatchOnSourceElement = (
 ): State => {
   /* istanbul ignore if */
   if (matched.index === undefined) {
-    // this is to make pleasure to typescript.
-    // But when we have a match we always have an index attribute.
-    // In reality we will never enter in this case.
+    // Typescript unfortunately has typings approximation
     throw new Error(
-      'matched exists and index not present. Case not implemented.'
+      'When matched exists, index is always present. You should not see this.'
     );
   }
 
