@@ -1,5 +1,5 @@
 import {SourceElement} from '../SourceElement';
 import {Token} from '../Token';
 
-export type TokenElement = SourceElement | Token;
-export type State = TokenElement[];
+export type StateElement = SourceElement | Token;
+export type State = StateElement[];
