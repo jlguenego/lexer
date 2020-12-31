@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "build_esm",
+    "module": "ES2015",
+    "moduleResolution": "Node"
+  },
+  "include": ["src/**/*.ts"]
+}

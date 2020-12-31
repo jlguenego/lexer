@@ -3,16 +3,19 @@
   "version": "1.2.0",
   "description": "Lexical analyzer in Full Javascript / Typescript",
   "main": "./build/src/index.js",
+  "module": "build_esm/src/index.js",
   "private": false,
   "scripts": {
     "test": "nyc mocha",
     "lint": "gts lint",
-    "clean": "gts clean && rimraf coverage",
+    "clean": "gts clean && rimraf coverage && rimraf build_esm",
     "compile": "tsc",
+    "compile:esm": "tsc --project tsconfig.esm.json",
     "fix": "gts fix",
     "prepare": "npm.cmd run compile",
     "pretest": "npm.cmd run compile",
     "posttest": "npm.cmd run lint",
+    "prerelease": "npm run compile && npm run compile:esm",
     "release": "standard-version"
   },
   "keywords": [
