@@ -86,13 +86,13 @@ tokenSequence: [
 ];
 ```
 
-## Understanding with examples
+## examples
 
-- First see the [mocha test](./test/).
-- ASN.1 language
-- Javascript language
-- JSON language
-- TOML language
+- See the [mocha test](./test/).
+
+TODO:
+
+- show example in famous language (JSON, XML, YAML, Javascript)
 
 ## Concepts
 
@@ -101,8 +101,9 @@ In compurter science, this process is known under the term
 [lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis).
 We call it also a **lexer**.
 
-The above `const tokenSequence = new Lexer(rules).tokenize(str);` instruction
-applies `rules` to tokenize a source string `str`.
+`const tokenSequence = new Lexer(rules).tokenize(str);`
+
+The above instruction applies `rules` to tokenize a source string `str`.
 
 The rules are specified according the language and applied according a regular expression given in `rule.pattern`.
 
