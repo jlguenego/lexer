@@ -32,16 +32,16 @@ export const blank = new Rule({
   ignore: true,
 });
 
-export const keywords = Rule.createKeywordRules(['var']);
+export const keywords = Rule.createKeywordRules(['var', 'const']);
 
-export const operators = Rule.createGroupRules(Group.OPERATOR, [
+export const operators = Rule.createGroupRules(Group.OPERATORS, [
   {
     name: 'equal',
     pattern: '=',
   },
 ]);
 
-export const separators = Rule.createGroupRules(Group.SEPARATOR, [
+export const separators = Rule.createGroupRules(Group.SEPARATORS, [
   {
     name: 'semi-column',
     pattern: ';',
@@ -51,5 +51,5 @@ export const separators = Rule.createGroupRules(Group.SEPARATOR, [
 export const identifier = new Rule({
   name: 'identifier',
   pattern: /\w+/,
-  group: Group.IDENTIFIER,
+  group: Group.IDENTIFIERS,
 });

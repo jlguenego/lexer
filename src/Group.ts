@@ -13,7 +13,7 @@
 export enum Group {
   NONE = '',
   KEYWORD = 'keyword',
-  OPERATOR = 'operator',
-  SEPARATOR = 'separator',
-  IDENTIFIER = 'identifier',
+  OPERATORS = 'operator',
+  SEPARATORS = 'separator',
+  IDENTIFIERS = 'identifier',
 }

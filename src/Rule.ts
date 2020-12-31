@@ -66,14 +66,17 @@ export interface RuleSpec {
  */
 export class Rule {
   static createKeywordRules(array: string[]) {
-    return array.map(
-      str =>
-        new Rule({
-          name: str,
-          pattern: new RegExp(str),
-          group: Group.KEYWORD,
-        })
-    );
+    // longest keyword must be applied first, so we sort the array.
+    return [...array]
+      .sort((a, b) => b.length - a.length)
+      .map(
+        str =>
+          new Rule({
+            name: str,
+            pattern: new RegExp(str),
+            group: Group.KEYWORD,
+          })
+      );
   }
 
   static createGroupRules(group: Group, array: RuleSpec[]) {
