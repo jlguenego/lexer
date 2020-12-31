@@ -122,10 +122,10 @@ we choose to apply successively one rule after another to the current state.
 The drawback is that certains rules (for instance string, comment) cannot be well
 correctly tokenized if they are nested together.
 
-Therefore this lexer do both algorithm successively:
+Therefore this lexer do both algorithms successively:
 
-1. Preprocessing: performs the slow and robust method with only the rules marked as preprocess flag.
-2. Main: performs the fast way: applying the rules one after the other to the state.
+1. **Preprocessing**: performs the slow and robust method with only the rules marked as preprocess flag.
+2. **Main**: performs the fast way: applying the rules one after the other to the state.
 
 The recommandation is to mark a rule with the preprocess flag only if the
 main phase cannot apply the rule correctly. Of course if there is no rules with preprocess flag,
