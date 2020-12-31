@@ -2,7 +2,6 @@ import {State} from './interfaces/State';
 import {applyRuleOnSourceElement} from './misc';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
-import {Token} from './Token';
 
 export const preprocess = (initialState: State, rules: Rule[]): State => {
   let previousState: State = [];
@@ -16,7 +15,7 @@ export const preprocess = (initialState: State, rules: Rule[]): State => {
 };
 
 const getStateLength = (r: State): number => {
-  return r[0] instanceof Token ? 0 : r[0].text.length;
+  return r[0] instanceof SourceElement ? r[0].text.length : 0;
 };
 
 export const getNextState = (state: State, rules: Rule[]) => {

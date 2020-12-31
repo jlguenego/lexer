@@ -1,9 +1,8 @@
 import {State} from './interfaces/State';
-import {TokenObjectSequence} from './interfaces/TokenInstanceObject';
+import {Token, TokenObjectSequence} from './interfaces/TokenInstanceObject';
 import {applyRuleOnSourceElement} from './misc';
 import {Rule} from './Rule';
 import {SourceElement} from './SourceElement';
-import {Token} from './Token';
 
 export const tokenize = (state: State, rules: Rule[]): TokenObjectSequence => {
   let ruleIndex = 0;
@@ -12,9 +11,7 @@ export const tokenize = (state: State, rules: Rule[]): TokenObjectSequence => {
     state = applyRule(state, rule);
     ruleIndex++;
   }
-  const finalState = convertToTokenSequence(state);
-
-  return finalState.map(ti => ti.toObject());
+  return convertToTokenSequence(state);
 };
 
 const hasSource = (state: State) =>

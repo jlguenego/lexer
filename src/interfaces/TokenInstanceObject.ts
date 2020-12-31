@@ -1,9 +1,9 @@
 import {Group} from '../Group';
 import {Position} from './Position';
 
-export type TokenObjectSequence = TokenObject[];
+export type TokenObjectSequence = Token[];
 
-export interface TokenObject {
+export interface Token {
   name: string;
   value: string;
   group: Group;

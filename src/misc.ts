@@ -2,7 +2,6 @@ import {Position} from './interfaces/Position';
 import {State} from './interfaces/State';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
-import {Token} from './Token';
 
 export const positionAdd = (pos: Position, str: string): Position => {
   const lines = str.split('\n');
@@ -42,7 +41,12 @@ export const applyRuleOnSourceElement = (
     result.push(new SourceElement(prefix, posStart));
   }
   if (!rule.ignore) {
-    result.push(new Token(rule.name, matched[0], rule.group, posMatch));
+    result.push({
+      name: rule.name,
+      value: matched[0],
+      group: rule.group,
+      position: posMatch,
+    });
   }
   const remainingIndex = matched.index + matched[0].length;
 
