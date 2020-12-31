@@ -136,6 +136,10 @@ For instance, the keyword rules should be applied from the longest one to the sh
 The most generic one (identifer, type, etc.) must be applied with very low priority,
 so it is recommanded to place them at the end of the rule list.
 
+## Typescript
+
+This module is written in Typescript and ready to be used in Typescript without separate typing module.
+
 ## TODO
 
 - Explain how it is working.
