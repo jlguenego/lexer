@@ -151,7 +151,6 @@ This module is written in Typescript and ready to be used in Typescript without 
 ## Thanks
 
 - Thanks to https://refactoring.guru/ for helping me to refactor code, trying to produce something understandable for the non expert.
-- Thanks to the
 
 ## Author
 
