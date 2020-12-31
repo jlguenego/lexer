@@ -108,7 +108,11 @@ The above instruction applies `rules` to tokenize a source string `str`.
 The rules are specified according the language and applied according a regular expression given in `rule.pattern`.
 
 During tokenization we define by the word **state** the source code being tokenized.
-The state is an array of source code fragment, called **source element** and recognized **token**.
+The state is a sequence of two types of element:
+
+- source code fragment, called **source element**, not yet tokenized,
+- and recognized **token**.
+
 At the beginning the state is an array of one **source element** reflecting the entire source code.
 At the end the state must be an array of only tokens, otherwise the source code is not respecting the syntax.
 
