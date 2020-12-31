@@ -21,7 +21,7 @@ var x = 3;
 var y = 52;
 `;
 
-// declare all the language token.
+// declare all the language rules.
 const blank = new Rule({
   name: 'blank',
   pattern: /\s+/,
@@ -123,7 +123,8 @@ Therefore this lexer do both algorithm successively:
 2. Main: performs the fast way: applying the rules one after the other to the state.
 
 The recommandation is to mark a rule with the preprocess flag only if the
-main phase cannot apply the rule correctly.
+main phase cannot apply the rule correctly. Of course if there is no rules with preprocess flag,
+no need to run the preprocessing phase.
 
 The main phase applies one rule after the other. This means that the order of rules are important.
 For instance, the keyword rules should be applied from the longest one to the shortest one.
