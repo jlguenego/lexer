@@ -1,6 +1,6 @@
 import {State} from './interfaces/State';
 import {Token, TokenSequence} from './interfaces/Token';
-import {applyRuleOnSourceElement} from './misc';
+import {applyRuleOnSourceElement} from './tools/apply-rule';
 import {Rule} from './Rule';
 import {SourceElement} from './SourceElement';
 

@@ -1,5 +1,5 @@
 import {State} from './interfaces/State';
-import {applyRuleOnSourceElement} from './misc';
+import {applyRuleOnSourceElement} from './tools/apply-rule';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
 
