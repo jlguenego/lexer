@@ -10,6 +10,8 @@ https://en.wikipedia.org/wiki/Lexical_analysis
 npm i @jlguenego/lexer
 ```
 
+[![Code Style: Google](https://img.shields.io/badge/code%20style-google-blueviolet.svg)](https://github.com/google/gts)
+
 ## Usage
 
 ```js
@@ -146,6 +148,11 @@ This module is written in Typescript and ready to be used in Typescript without 
 - ESM module
 - Refactor with rafactoring.guru
 
+## Thanks
+
+- Thanks to https://refactoring.guru/ for helping me to refactor code, trying to produce something understandable for the non expert.
+- Thanks to the
+
 ## Author
 
-Jean-Louis GUENEGO <jlguenego@gmail.com>
+Made with :heart: by Jean-Louis GUENEGO <jlguenego@gmail.com>
