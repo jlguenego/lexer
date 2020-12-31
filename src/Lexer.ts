@@ -13,12 +13,8 @@ export class Lexer {
   }
 
   tokenize(source: string): TokenSequence {
-    // convert string to UNIX format.
-    const src = source.replace(/\r\n/g, '\n');
+    const src = convertToUnixFormat(source);
 
-    // preprocess phase : rule are all applied according
-    // a cursor going from the beginning to the end of the source code.
-    // slow. To be used for rules that cannot be well applied in the process phase.
     const state = preprocessorPhase(
       [new SourceElement(src, {line: 1, col: 1})],
       this.preprocessRules
@@ -29,3 +25,5 @@ export class Lexer {
     return mainPhase(state, this.rules);
   }
 }
+
+const convertToUnixFormat = (s: string) => s.replace(/\r\n/g, '\n');
