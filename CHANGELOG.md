@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/jlguenego/lexer/compare/v1.2.0...v1.3.0) (2020-12-31)
+
+
+### Features
+
+* added es6 module build ([97b8c39](https://github.com/jlguenego/lexer/commit/97b8c396ceff3b3b96e7c8c5ac7ebd58c44b05d0))
+* adding sort in keywords ([06273c3](https://github.com/jlguenego/lexer/commit/06273c3576ca33fbc2341553ed52479ff8b1c8bc))
+
 ## [1.2.0](https://github.com/jlguenego/lexer/compare/v1.1.2...v1.2.0) (2020-12-31)
 
 
