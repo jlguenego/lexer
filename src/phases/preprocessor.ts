@@ -8,7 +8,7 @@ export const preprocessorPhase = (
   rules: Rule[]
 ): State => {
   let previousState: State = [];
-  let state: State = initialState;
+  let state = initialState;
   while (state !== previousState) {
     previousState = state;
     state = getNextState(previousState, rules);
