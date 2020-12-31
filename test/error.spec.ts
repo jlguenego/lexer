@@ -13,6 +13,7 @@ import {
 describe('Comment Unit Test', () => {
   it('simple comment', () => {
     const str = `
+/* small comment */
 var x = 3; 
     /* this comment does not end...
 `;
@@ -32,7 +33,7 @@ var x = 3;
     } catch (e) {
       assert.deepStrictEqual(
         e.message,
-        "Syntax Error (Lexer): '/*' at line 3 and col 5"
+        "Syntax Error (Lexer): '/*' at line 4 and col 5"
       );
     }
   });

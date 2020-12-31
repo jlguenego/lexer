@@ -47,6 +47,7 @@ const applyMatchOnSourceElement = (
   matched: RegExpMatchArray,
   matchAll: boolean
 ): State => {
+  /* istanbul ignore if */
   if (matched.index === undefined) {
     // this is to make pleasure to typescript.
     // But when we have a match we always have an index attribute.
