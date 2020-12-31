@@ -65,7 +65,7 @@ export interface RuleSpec {
  * @class Rule
  */
 export class Rule {
-  static createKeywordRules(array: string[]) {
+  static createKeywords(array: string[]) {
     // longest keyword must be applied first, so we sort the array.
     return [...array]
       .sort((a, b) => b.length - a.length)
@@ -79,7 +79,7 @@ export class Rule {
       );
   }
 
-  static createGroupRules(group: Group, array: RuleSpec[]) {
+  static createGroup(group: Group, array: RuleSpec[]) {
     return array.map(spec => new Rule({group, ...spec}));
   }
 
