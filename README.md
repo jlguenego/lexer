@@ -4,6 +4,8 @@ Lexical Analyzer.
 
 https://en.wikipedia.org/wiki/Lexical_analysis
 
+Why ? I wanted a SIMPLE, INTUITIVE, FAST, Full JS lexer, allowing to **tokenize correctly string and comment** in a language.
+
 ## Install
 
 ```
@@ -149,6 +151,7 @@ This modules exports both a CommonJS module and ES2015 module.
 ## Thanks
 
 - Thanks to https://refactoring.guru/ for helping me to refactor code, trying to produce something understandable for the non expert.
+- Thanks to the other lexers I have visited on github. Specially the [chevrotain](https://github.com/SAP/chevrotain) lexer.
 
 ## Author
 
