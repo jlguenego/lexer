@@ -27,6 +27,9 @@ export const applyRuleOnSourceElement = (
   }
   const state: State = [];
   if (matched.index === undefined) {
+    // this is to make pleasure to typescript.
+    // But when we have a match we always have an index attribute.
+    // In reality we will never enter in this case.
     throw new Error(
       'matched exists and index not present. Case not implemented.'
     );
