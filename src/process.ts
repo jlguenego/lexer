@@ -1,5 +1,5 @@
 import {State} from './interfaces/State';
-import {Token, TokenSequence} from './interfaces/TokenInstanceObject';
+import {Token, TokenSequence} from './interfaces/Token';
 import {applyRuleOnSourceElement} from './misc';
 import {Rule} from './Rule';
 import {SourceElement} from './SourceElement';

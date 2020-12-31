@@ -1,4 +1,4 @@
-import {TokenSequence} from './interfaces/TokenInstanceObject';
+import {TokenSequence} from './interfaces/Token';
 import {preprocess} from './preprocessor';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
