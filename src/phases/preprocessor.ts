@@ -22,6 +22,9 @@ const getPrefixLength = (r: State): number => {
 
 export const getNextState = (state: State, rules: Rule[]) => {
   const sourceElt = state[state.length - 1];
+
+  // if no more source code to preprocess then end the preprocess phase
+  // by returning the same state.
   if (!(sourceElt instanceof SourceElement)) {
     return state;
   }
@@ -35,9 +38,12 @@ export const getNextState = (state: State, rules: Rule[]) => {
       },
       [sourceElt] as State
     );
+
+  // if no rule where applied, return identical state (to end of preprocess phase).
   if (suffixState[0] === sourceElt) {
     return state;
   }
+
   // replace the last source element with the suffixState content.
   return [...state.slice(0, -1), ...suffixState];
 };
