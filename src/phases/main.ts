@@ -5,11 +5,11 @@ import {Rule} from '../Rule';
 import {SourceElement} from '../SourceElement';
 
 export const mainPhase = (state: State, rules: Rule[]): TokenSequence => {
-  let ruleIndex = 0;
-  while (hasSource(state) && ruleIndex < rules.length) {
-    const rule = rules[ruleIndex];
+  for (const rule of rules) {
+    if (!hasSource(state)) {
+      break;
+    }
     state = applyRule(state, rule);
-    ruleIndex++;
   }
   return convertToTokenSequence(state);
 };
@@ -30,15 +30,12 @@ export const convertToTokenSequence = (state: State): Token[] => {
 
 const applyRule = (state: State, rule: Rule): State => {
   const result: State = [];
-
-  for (let i = 0; i < state.length; i++) {
-    const elt = state[i];
+  for (const elt of state) {
     if (!(elt instanceof SourceElement)) {
       result.push(elt);
       continue;
     }
-    const parsedElts = applyRuleOnSourceElement(elt, rule);
-    result.push(...parsedElts);
+    result.push(...applyRuleOnSourceElement(elt, rule));
   }
   return result;
 };
