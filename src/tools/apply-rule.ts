@@ -2,6 +2,7 @@ import {State} from '../interfaces/State';
 import {SourceElement} from '../SourceElement';
 import {Rule} from '../Rule';
 import {positionAdd} from './position';
+import {Token} from '../interfaces/Token';
 
 /**
  * Apply a rule on a source element.
@@ -64,23 +65,19 @@ const applyMatchOnSourceElement = (
 
   const state: State = [];
 
-  // prefix
   if (prefixText.length > 0) {
     state.push(new SourceElement(prefixText, startPos));
   }
 
-  // token
   if (!rule.ignore) {
-    // add the token in the state
     state.push({
       name: rule.name,
       value: matched[0],
       group: rule.group,
       position: matchPos,
-    });
+    } as Token);
   }
 
-  // suffix
   if (suffixText.length > 0) {
     const se = new SourceElement(suffixText, suffixPos);
     const array = matchAll ? applyRuleOnSourceElement(se, rule) : [se];
