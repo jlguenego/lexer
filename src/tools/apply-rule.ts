@@ -75,7 +75,7 @@ const applyMatchOnSourceElement = (
       lexeme: matched[0],
       group: rule.group,
       position: matchPos,
-      attributes: rule.generateTokenAttributes(matched[0]),
+      attribute: rule.generateTokenAttribute(matched[0]),
     } as Token);
   }
 

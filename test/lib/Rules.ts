@@ -11,7 +11,7 @@ export const monolineComment = new Rule({
   name: 'monoline comment',
   pattern: /[/][/].*?\n/,
   preprocess: true,
-  generateTokenAttributes(lexeme: string) {
+  generateTokenAttribute(lexeme: string) {
     return lexeme.substring(0, lexeme.length - 1);
   },
   group: Group.COMMENTS,
@@ -22,7 +22,7 @@ export const multilineString = new Rule({
   // this regexp contains a negative lookbehind
   pattern: /`.*?(?<!\\)`/,
   preprocess: true,
-  generateTokenAttributes(lexeme: string) {
+  generateTokenAttribute(lexeme: string) {
     return lexeme.substring(1, lexeme.length - 1);
   },
   // note that if the multiline string does not take interpolation like in JS/TS.
@@ -34,7 +34,7 @@ export const monolineString = new Rule({
   // this regexp contains a negative lookbehind
   pattern: /"[^\n]*?(?<!\\)"/,
   preprocess: true,
-  generateTokenAttributes(lexeme: string) {
+  generateTokenAttribute(lexeme: string) {
     return lexeme.substring(1, lexeme.length - 1);
   },
   group: Group.LITTERALS,
