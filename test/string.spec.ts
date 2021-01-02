@@ -32,21 +32,21 @@ var x = "this include double quote \\".";
       {
         name: 'var',
         lexeme: 'var',
-        group: 'keyword',
+        group: 'keywords',
         position: {line: 2, col: 1},
         attributes: 'var',
       },
       {
         name: 'identifier',
         lexeme: 'x',
-        group: 'identifier',
+        group: 'identifiers',
         position: {line: 2, col: 5},
         attributes: 'x',
       },
       {
         name: 'equal',
         lexeme: '=',
-        group: 'operator',
+        group: 'operators',
         position: {line: 2, col: 7},
         attributes: '=',
       },
@@ -60,7 +60,7 @@ var x = "this include double quote \\".";
       {
         name: 'semi-column',
         lexeme: ';',
-        group: 'separator',
+        group: 'separators',
         position: {line: 2, col: 40},
         attributes: ';',
       },

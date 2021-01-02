@@ -84,7 +84,7 @@ export class Rule {
           new Rule({
             name: str,
             pattern: new RegExp(str),
-            group: Group.KEYWORD,
+            group: Group.KEYWORDS,
           })
       );
   }

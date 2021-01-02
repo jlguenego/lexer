@@ -71,19 +71,19 @@ tokenSequence: [
   {
     name: 'var',
     lexeme: 'var',
-    group: 'keyword',
+    group: 'keywords',
     position: {col: 1, line: 2},
   },
   {
     name: 'identifier',
     lexeme: 'x',
-    group: 'identifier',
+    group: 'identifiers',
     position: {col: 5, line: 2},
   },
   {
     name: 'equal',
     lexeme: '=',
-    group: 'operator',
+    group: 'operators',
     position: {col: 7, line: 2},
   },
   // ...
