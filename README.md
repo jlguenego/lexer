@@ -120,7 +120,7 @@ The state is a sequence of two types of element:
 At the beginning the state is an array of one **source element** reflecting the entire source code.
 At the end the state must be an array of only tokens, otherwise the source code is not respecting the syntax.
 
-Normally, the source code is tokenized from the beginning to the end of the string.
+Normally, the source code is tokenized from the beginning to the end of the string (called left to right scan).
 But tokenizing can be faster if instead of looking from the beginning to the end,
 we choose to apply successively one rule after another to the current state.
 The drawback is that certains rules (for instance string, comment) cannot be well
@@ -134,6 +134,10 @@ Therefore this lexer do both algorithms successively:
 The recommandation is to mark a rule with the preprocess flag only if the
 main phase cannot apply the rule correctly. Of course if there is no rules with preprocess flag,
 no need to run the preprocessing phase.
+
+The preprocess phase applies all rules, and select the rule that will
+apply at the smallest index of the source string.
+It is slower than the main phase because there is many rules applied for finally only one selected.
 
 The main phase applies one rule after the other. This means that the order of rules are important.
 For instance, the keyword rules should be applied from the longest one to the shortest one ([maximal munch rule](https://en.wikipedia.org/wiki/Maximal_munch))
