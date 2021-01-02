@@ -17,7 +17,7 @@ describe('Basic Unit Test', () => {
       {
         name: 'multiline string',
         lexeme: '`titi`',
-        group: '',
+        group: 'litterals',
         position: {line: 1, col: 1},
         attributes: 'titi',
       },

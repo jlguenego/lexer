@@ -53,7 +53,7 @@ var x = "this include double quote \\".";
       {
         name: 'monoline string',
         lexeme: '"this include double quote \\"."',
-        group: '',
+        group: 'litterals',
         position: {line: 2, col: 9},
         attributes: 'this include double quote \\".',
       },

@@ -39,7 +39,7 @@ var a = \`
       {
         name: 'multiline comment',
         lexeme: '/* this is\nvar a = `\nhey\n`\n*/',
-        group: '',
+        group: 'comments',
         position: {line: 2, col: 1},
         attributes: '/* this is\nvar a = `\nhey\n`\n*/',
       },
@@ -67,7 +67,7 @@ var a = \`
       {
         name: 'multiline string',
         lexeme: '`\n/* hello */\n`',
-        group: '',
+        group: 'litterals',
         position: {line: 7, col: 9},
         attributes: '\n/* hello */\n',
       },
