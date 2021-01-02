@@ -1,11 +1,11 @@
 import {Group} from '../Group';
 import {Position} from './Position';
 
-export type LexemeSequence = Lexeme[];
+export type TokenSequence = Token[];
 
-export interface Lexeme {
+export interface Token {
   name: string;
-  value: string;
+  lexeme: string;
   group: Group;
   position: Position;
 }

@@ -31,31 +31,31 @@ var x = "this include double quote \\".";
     const expectedTokenSequence = [
       {
         name: 'var',
-        value: 'var',
+        lexeme: 'var',
         group: 'keyword',
         position: {line: 2, col: 1},
       },
       {
         name: 'identifier',
-        value: 'x',
+        lexeme: 'x',
         group: 'identifier',
         position: {line: 2, col: 5},
       },
       {
         name: 'equal',
-        value: '=',
+        lexeme: '=',
         group: 'operator',
         position: {line: 2, col: 7},
       },
       {
         name: 'monoline string',
-        value: '"this include double quote \\"."',
+        lexeme: '"this include double quote \\"."',
         group: '',
         position: {line: 2, col: 9},
       },
       {
         name: 'semi-column',
-        value: ';',
+        lexeme: ';',
         group: 'separator',
         position: {line: 2, col: 40},
       },

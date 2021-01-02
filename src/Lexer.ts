@@ -1,4 +1,4 @@
-import {LexemeSequence} from './interfaces/Lexeme';
+import {TokenSequence} from './interfaces/Token';
 import {preprocessorPhase} from './phases/preprocessor';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
@@ -12,7 +12,7 @@ export class Lexer {
     this.preprocessRules = rules.filter(t => t.preprocess === true);
   }
 
-  tokenize(source: string): LexemeSequence {
+  tokenize(source: string): TokenSequence {
     const src = convertToUnixFormat(source);
 
     const state = preprocessorPhase(

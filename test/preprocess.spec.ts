@@ -38,31 +38,31 @@ var a = \`
     const expectedTokenSequence = [
       {
         name: 'multiline comment',
-        value: '/* this is\nvar a = `\nhey\n`\n*/',
+        lexeme: '/* this is\nvar a = `\nhey\n`\n*/',
         group: '',
         position: {line: 2, col: 1},
       },
       {
         name: 'var',
-        value: 'var',
+        lexeme: 'var',
         group: 'keyword',
         position: {line: 7, col: 1},
       },
       {
         name: 'identifier',
-        value: 'a',
+        lexeme: 'a',
         group: 'identifier',
         position: {line: 7, col: 5},
       },
       {
         name: 'equal',
-        value: '=',
+        lexeme: '=',
         group: 'operator',
         position: {line: 7, col: 7},
       },
       {
         name: 'multiline string',
-        value: '`\n/* hello */\n`',
+        lexeme: '`\n/* hello */\n`',
         group: '',
         position: {line: 7, col: 9},
       },

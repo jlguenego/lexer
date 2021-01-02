@@ -16,7 +16,7 @@ describe('Basic Unit Test', () => {
     assert.deepStrictEqual(tokenSequence, [
       {
         name: 'multiline string',
-        value: '`titi`',
+        lexeme: '`titi`',
         group: '',
         position: {line: 1, col: 1},
       },

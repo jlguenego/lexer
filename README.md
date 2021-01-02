@@ -70,19 +70,19 @@ This produces the following output:
 tokenSequence: [
   {
     name: 'var',
-    value: 'var',
+    lexeme: 'var',
     group: 'keyword',
     position: {col: 1, line: 2},
   },
   {
     name: 'identifier',
-    value: 'x',
+    lexeme: 'x',
     group: 'identifier',
     position: {col: 5, line: 2},
   },
   {
     name: 'equal',
-    value: '=',
+    lexeme: '=',
     group: 'operator',
     position: {col: 7, line: 2},
   },

@@ -1,5 +1,5 @@
 import {State} from '../interfaces/State';
-import {Lexeme, LexemeSequence} from '../interfaces/Lexeme';
+import {Token, TokenSequence} from '../interfaces/Token';
 import {applyRuleOnSourceElement} from '../tools/apply-rule';
 import {Rule} from '../Rule';
 import {SourceElement} from '../SourceElement';
@@ -13,9 +13,9 @@ import {SourceElement} from '../SourceElement';
  *
  * @param {State} state
  * @param {Rule[]} rules
- * @returns {LexemeSequence}
+ * @returns {TokenSequence}
  */
-export const mainPhase = (state: State, rules: Rule[]): LexemeSequence => {
+export const mainPhase = (state: State, rules: Rule[]): TokenSequence => {
   for (const rule of rules) {
     if (!hasSource(state)) {
       break;
@@ -28,7 +28,7 @@ export const mainPhase = (state: State, rules: Rule[]): LexemeSequence => {
 const hasSource = (state: State) =>
   state.find(elt => elt instanceof SourceElement) !== undefined;
 
-export const convertToTokenSequence = (state: State): Lexeme[] => {
+export const convertToTokenSequence = (state: State): Token[] => {
   return state.map(te => {
     if (te instanceof SourceElement) {
       throw new Error(
