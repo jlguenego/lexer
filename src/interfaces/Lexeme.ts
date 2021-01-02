@@ -1,9 +1,9 @@
 import {Group} from '../Group';
 import {Position} from './Position';
 
-export type TokenSequence = Token[];
+export type LexemeSequence = Lexeme[];
 
-export interface Token {
+export interface Lexeme {
   name: string;
   value: string;
   group: Group;

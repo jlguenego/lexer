@@ -2,7 +2,7 @@ import {State} from '../interfaces/State';
 import {SourceElement} from '../SourceElement';
 import {Rule} from '../Rule';
 import {positionAdd} from './position';
-import {Token} from '../interfaces/Token';
+import {Lexeme} from '../interfaces/Lexeme';
 
 /**
  * Apply a rule on a source element.
@@ -75,7 +75,7 @@ const applyMatchOnSourceElement = (
       value: matched[0],
       group: rule.group,
       position: matchPos,
-    } as Token);
+    } as Lexeme);
   }
 
   if (suffixText.length > 0) {
