@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/jlguenego/lexer/compare/v1.3.0...v1.4.0) (2021-01-02)
+
+
+### Features
+
+* added value field inside token ([3f4c1b1](https://github.com/jlguenego/lexer/commit/3f4c1b1cbb894e2f9c668919e9ef90a1e709d6a7))
+
+
+### Bug Fixes
+
+* added rules in groups. ([3afac15](https://github.com/jlguenego/lexer/commit/3afac15e18f6a0b37ae18b6ad76a1a19433f8ea2))
+
 ## [1.3.0](https://github.com/jlguenego/lexer/compare/v1.2.0...v1.3.0) (2020-12-31)
 
 
