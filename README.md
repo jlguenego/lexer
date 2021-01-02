@@ -139,7 +139,7 @@ The preprocess phase applies all rules, and select the rule that will
 apply at the smallest index of the source string.
 It is slower than the main phase because there is many rules applied for finally only one selected.
 
-The main phase applies one rule after the other. This means that the order of rules are important.
+The main phase applies one rule after the other. This means that the order of rules declaration are important.
 For instance, the keyword rules should be applied from the longest one to the shortest one ([maximal munch rule](https://en.wikipedia.org/wiki/Maximal_munch))
 The most generic one (identifer, type, etc.) must be applied with very low priority,
 so it is recommanded to place them at the end of the rule list.
