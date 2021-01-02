@@ -156,7 +156,8 @@ This modules exports both a CommonJS module and ES2015 module.
 
 - Thanks to https://refactoring.guru/ for helping me to refactor code, trying to produce something understandable for the non expert.
 - Thanks to the other lexers I have visited on github. Specially the [chevrotain](https://github.com/SAP/chevrotain) lexer.
-- Thanks to the people at Stanford University releasing for free their compiler course: https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/
+- Thanks to the people at Stanford University releasing for free their compiler course.
+  I tried to speak with the same terminology in this lexer: https://web.stanford.edu/class/archive/cs/cs143/cs143.1128/
 
 ## Author
 
