@@ -55,6 +55,16 @@ export interface RuleSpec {
    * @memberof RuleSpec
    */
   preprocess?: boolean;
+
+  /**
+   * Extract a token value from the lexeme
+   * Note: the lexeme is the original source code fragment corresponding to the token.
+   *
+   * @param {string} lexeme
+   * @returns {string}
+   * @memberof RuleSpec
+   */
+  getValue?(lexeme: string): string;
 }
 
 /**
@@ -88,6 +98,7 @@ export class Rule {
   ignore = false;
   group = Group.NONE;
   preprocess = false;
+  getValue = (lexeme: string) => lexeme;
 
   constructor(spec: RuleSpec) {
     Object.assign(this, spec);

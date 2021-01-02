@@ -34,30 +34,35 @@ var x = "this include double quote \\".";
         lexeme: 'var',
         group: 'keyword',
         position: {line: 2, col: 1},
+        value: 'var',
       },
       {
         name: 'identifier',
         lexeme: 'x',
         group: 'identifier',
         position: {line: 2, col: 5},
+        value: 'x',
       },
       {
         name: 'equal',
         lexeme: '=',
         group: 'operator',
         position: {line: 2, col: 7},
+        value: '=',
       },
       {
         name: 'monoline string',
         lexeme: '"this include double quote \\"."',
         group: '',
         position: {line: 2, col: 9},
+        value: 'this include double quote \\".',
       },
       {
         name: 'semi-column',
         lexeme: ';',
         group: 'separator',
         position: {line: 2, col: 40},
+        value: ';',
       },
     ];
     assert.deepStrictEqual(tokenSequence, expectedTokenSequence);

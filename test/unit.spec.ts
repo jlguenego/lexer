@@ -19,6 +19,7 @@ describe('Basic Unit Test', () => {
         lexeme: '`titi`',
         group: '',
         position: {line: 1, col: 1},
+        value: 'titi',
       },
     ]);
   });

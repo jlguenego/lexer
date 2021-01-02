@@ -10,8 +10,8 @@ import {
   separators,
 } from './lib/Rules';
 
-describe('Comment Unit Test', () => {
-  it('simple comment', () => {
+describe('Error Unit Test', () => {
+  it('should go on error', () => {
     const str = `
 /* small comment */
 var x = 3; 
