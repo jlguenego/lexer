@@ -4,6 +4,7 @@ export const multiLineComment = new Rule({
   name: 'multiline comment',
   pattern: /[/][*].*?[*][/]/,
   preprocess: true,
+  group: Group.COMMENTS,
 });
 
 export const monolineComment = new Rule({
@@ -13,6 +14,7 @@ export const monolineComment = new Rule({
   generateTokenAttributes(lexeme: string) {
     return lexeme.substring(0, lexeme.length - 1);
   },
+  group: Group.COMMENTS,
 });
 
 export const multilineString = new Rule({
@@ -23,6 +25,8 @@ export const multilineString = new Rule({
   generateTokenAttributes(lexeme: string) {
     return lexeme.substring(1, lexeme.length - 1);
   },
+  // note that if the multiline string does not take interpolation like in JS/TS.
+  group: Group.LITTERALS,
 });
 
 export const monolineString = new Rule({
@@ -33,6 +37,7 @@ export const monolineString = new Rule({
   generateTokenAttributes(lexeme: string) {
     return lexeme.substring(1, lexeme.length - 1);
   },
+  group: Group.LITTERALS,
 });
 
 export const blank = new Rule({
