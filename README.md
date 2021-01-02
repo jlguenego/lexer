@@ -136,7 +136,7 @@ main phase cannot apply the rule correctly. Of course if there is no rules with 
 no need to run the preprocessing phase.
 
 The main phase applies one rule after the other. This means that the order of rules are important.
-For instance, the keyword rules should be applied from the longest one to the shortest one.
+For instance, the keyword rules should be applied from the longest one to the shortest one ([maximal munch rule](https://en.wikipedia.org/wiki/Maximal_munch))
 The most generic one (identifer, type, etc.) must be applied with very low priority,
 so it is recommanded to place them at the end of the rule list.
 

@@ -76,7 +76,8 @@ export interface RuleSpec {
  */
 export class Rule {
   static createKeywords(array: string[]): Rule[] {
-    // longest keyword must be applied first, so we sort the array.
+    // longest keyword must be applied first, so we sort the array
+    // (maximal munch algorithm, also called longest match)
     return [...array]
       .sort((a, b) => b.length - a.length)
       .map(
