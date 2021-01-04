@@ -4,7 +4,10 @@ Lexical Analyzer.
 
 https://en.wikipedia.org/wiki/Lexical_analysis
 
-Why ? I wanted a SIMPLE, INTUITIVE, FAST, Full JS lexer, allowing to **tokenize correctly string and comment** in a language.
+Why ? I wanted a SIMPLE, INTUITIVE, FAST, Full JS lexer, allowing to
+
+- **tokenize correctly string and comment** in a language.
+- **stropping** for being able to write not ambigous grammar in the next phase (syntax analysis)
 
 Module useful for:
 
