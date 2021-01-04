@@ -28,6 +28,8 @@ export const applyRuleOnSourceElement = (
   return applyMatchOnSourceElement(elt, rule, matched, matchAll);
 };
 
+const ctxt = {};
+
 /**
  * Generate a state = [prefixSourceElt?, token, suffixSourceElt?].
  * prefix and suffix are omitted if their text is empty.
@@ -68,7 +70,7 @@ const applyMatchOnSourceElement = (
     state.push(new SourceElement(prefixText, startPos));
   }
 
-  state.push(...rule.expand(matched, matchPos));
+  state.push(...rule.expand(matched, matchPos, ctxt));
 
   if (suffixText.length > 0) {
     const se = new SourceElement(suffixText, suffixPos);

@@ -5,7 +5,8 @@ import {Token} from './interfaces/Token';
 
 export type RuleExpandFn = (
   match: RegExpMatchArray,
-  position: Position
+  position: Position,
+  ctxt: Object
 ) => State;
 
 export interface RuleSpec {
@@ -132,6 +133,7 @@ export class Rule {
       } as Token,
     ];
   };
+  context: unknown;
 
   constructor(spec: RuleSpec) {
     Object.assign(this, spec);

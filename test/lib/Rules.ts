@@ -1,5 +1,6 @@
 import {Group, Rule} from '../../src';
 import {Position} from '../../src/interfaces/Position';
+import {Token} from '../../src/interfaces/Token';
 import {positionAdd} from '../../src/tools/position';
 
 export const multiLineComment = new Rule({
@@ -92,4 +93,44 @@ export const identifier = new Rule({
   name: 'identifier',
   pattern: /\w+/,
   group: Group.IDENTIFIERS,
+});
+
+export const indent = new Rule({
+  name: 'indent',
+  pattern: /\n( *)/,
+  group: Group.SEPARATORS,
+  expand: (
+    match: RegExpMatchArray,
+    position: Position,
+    ctxt: {level?: number}
+  ) => {
+    ctxt.level = ctxt.level ?? 0;
+    const spaceNbr = match[1].length;
+    const nextLevel = spaceNbr / 2;
+    const diff = nextLevel - ctxt.level;
+    ctxt.level = nextLevel;
+    if (diff > 0) {
+      const indentTk: Token = {
+        name: 'indent',
+        attribute: undefined,
+        group: Group.SEPARATORS,
+        lexeme: '',
+        position: position,
+      };
+      return new Array(diff).fill(indentTk);
+    }
+    if (diff < 0) {
+      const dedentTk: Token = {
+        name: 'dedent',
+        attribute: undefined,
+        group: Group.SEPARATORS,
+        lexeme: '',
+        position: position,
+      };
+      return new Array(-diff).fill(dedentTk);
+    }
+
+    // diff === 0
+    return [];
+  },
 });
