@@ -1,6 +1,10 @@
-# Lexer
-
-Lexical Analyzer.
+<div align="center">
+    <img src="doc/illustration.png">
+  <h1>Lexer</h1>
+  <p>
+    Lexical Analyzer.
+  </p>
+</div>
 
 https://en.wikipedia.org/wiki/Lexical_analysis
 
