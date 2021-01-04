@@ -154,6 +154,9 @@ For instance, the keyword rules should be applied from the longest one to the sh
 The most generic one (identifer, type, etc.) must be applied with very low priority,
 so it is recommanded to place them at the end of the rule list.
 
+When a rule is applied, its method `expand` is executed. This method replaces the source element by an array of source elements and tokens.
+Context is allowed for doing scenario like [off-side rule](https://en.wikipedia.org/wiki/Off-side_rule).
+
 ## Typescript
 
 This module is written in Typescript and ready to be used in Typescript without separate typing module.
