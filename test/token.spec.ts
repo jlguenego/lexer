@@ -1,6 +1,13 @@
 import assert from 'assert';
 import {Lexer} from '../src/index';
-import {blank, identifier, keywords, operators, separators} from './lib/Rules';
+import {
+  blank,
+  identifier,
+  keywords,
+  operators,
+  separators,
+  varX,
+} from './lib/Rules';
 
 describe('First Unit Test', () => {
   it('simple token', () => {
@@ -9,7 +16,14 @@ var x = 3;
 var y = 52;
 `;
 
-    const rules = [blank, ...keywords, ...operators, ...separators, identifier];
+    const rules = [
+      varX,
+      blank,
+      ...keywords,
+      ...operators,
+      ...separators,
+      identifier,
+    ];
     const tokenSequence = new Lexer(rules).tokenize(str);
     const expectedTokenSequence = [
       {
@@ -20,7 +34,7 @@ var y = 52;
         attribute: 'var',
       },
       {
-        name: 'identifier',
+        name: 'variableIdentifier',
         lexeme: 'x',
         group: 'identifiers',
         position: {line: 2, col: 5},
@@ -55,7 +69,7 @@ var y = 52;
         attribute: 'var',
       },
       {
-        name: 'identifier',
+        name: 'variableIdentifier',
         lexeme: 'y',
         group: 'identifiers',
         position: {line: 3, col: 5},

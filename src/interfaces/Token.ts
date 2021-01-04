@@ -8,4 +8,5 @@ export interface Token {
   lexeme: string;
   group: Group;
   position: Position;
+  attribute: unknown;
 }

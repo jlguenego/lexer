@@ -1,4 +1,6 @@
 import {Group, Rule} from '../../src';
+import {Position} from '../../src/interfaces/Position';
+import {positionAdd} from '../../src/tools/position';
 
 export const multiLineComment = new Rule({
   name: 'multiline comment',
@@ -44,6 +46,30 @@ export const blank = new Rule({
   name: 'blank',
   pattern: /\s+/,
   ignore: true,
+});
+
+export const varX = new Rule({
+  name: 'varx',
+  pattern: /(var)(\s+)(\w+)/,
+  preprocess: false,
+  expand: (match: RegExpMatchArray, position: Position) => {
+    return [
+      {
+        name: match[1],
+        group: Group.KEYWORDS,
+        attribute: 'var',
+        lexeme: 'var',
+        position: position,
+      },
+      {
+        name: 'variableIdentifier',
+        group: Group.IDENTIFIERS,
+        attribute: match[3],
+        lexeme: match[3],
+        position: positionAdd(position, match[1] + match[2]),
+      },
+    ];
+  },
 });
 
 export const keywords = Rule.createKeywords(['var', 'const']);

@@ -1,4 +1,12 @@
 import {Group} from './Group';
+import {Position} from './interfaces/Position';
+import {State} from './interfaces/State';
+import {Token} from './interfaces/Token';
+
+export type RuleExpandFn = (
+  match: RegExpMatchArray,
+  position: Position
+) => State;
 
 export interface RuleSpec {
   /**
@@ -65,6 +73,16 @@ export interface RuleSpec {
    * @memberof RuleSpec
    */
   generateTokenAttribute?(lexeme: string): unknown;
+
+  /**
+   * Allows a rule to transform a lexeme to a state (array of token or source element).
+   *
+   * @default to a state with the matching token
+   *
+   * @type {RuleExpandFn}
+   * @memberof RuleSpec
+   */
+  expand?: RuleExpandFn;
 }
 
 /**
@@ -100,6 +118,20 @@ export class Rule {
   group = Group.NONE;
   preprocess = false;
   generateTokenAttribute = (lexeme: string) => lexeme;
+  expand: RuleExpandFn = (match: RegExpMatchArray, position: Position) => {
+    if (this.ignore) {
+      return [];
+    }
+    return [
+      {
+        name: this.name,
+        lexeme: match[0],
+        group: this.group,
+        position: position,
+        attribute: this.generateTokenAttribute(match[0]),
+      } as Token,
+    ];
+  };
 
   constructor(spec: RuleSpec) {
     Object.assign(this, spec);
