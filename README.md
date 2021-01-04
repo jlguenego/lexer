@@ -6,6 +6,12 @@ https://en.wikipedia.org/wiki/Lexical_analysis
 
 Why ? I wanted a SIMPLE, INTUITIVE, FAST, Full JS lexer, allowing to **tokenize correctly string and comment** in a language.
 
+Module useful for:
+
+- compilers
+- prettyprinters
+- linters
+
 ## Install
 
 ```
