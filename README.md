@@ -8,6 +8,7 @@ Why ? I wanted a SIMPLE, INTUITIVE, FAST, Full JS lexer, allowing to
 
 - **tokenize correctly string and comment** in a language.
 - **stropping** for being able to write not ambigous grammar in the next phase (syntax analysis)
+- **use context** for being able to make off-side rules languages, etc.
 
 Module useful for:
 
