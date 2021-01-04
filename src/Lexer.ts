@@ -1,8 +1,8 @@
 import {TokenSequence} from './interfaces/Token';
-import {preprocessorPhase} from './phases/preprocessor';
+import {preprocessorStage} from './stages/preprocessor';
 import {SourceElement} from './SourceElement';
 import {Rule} from './Rule';
-import {mainPhase} from './phases/main';
+import {mainStage} from './stages/main';
 
 export class Lexer {
   rules: Rule[];
@@ -15,12 +15,12 @@ export class Lexer {
   tokenize(source: string): TokenSequence {
     const src = convertToUnixFormat(source);
 
-    const state = preprocessorPhase(
+    const state = preprocessorStage(
       [new SourceElement(src, {line: 1, col: 1})],
       this.preprocessRules
     );
 
-    return mainPhase(state, this.rules);
+    return mainStage(state, this.rules);
   }
 }
 

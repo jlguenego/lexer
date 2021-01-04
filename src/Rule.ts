@@ -49,11 +49,11 @@ export interface RuleSpec {
   group?: Group;
 
   /**
-   * For performance reason, some rules must be applied in a first phase, called preprocessing.
+   * For performance reason, some rules must be applied in a first stage, called preprocessing.
    * During the tokenization preprocessing, only the rules with preprocess flag are applied.
    * During the tokenization, only the rules without the preprocess flag are applied.
    *
-   * Preprocessing is a little bit slower phase but makes possible rules like string or comment
+   * Preprocessing is a little bit slower stage but makes possible rules like string or comment
    * to be parsed properly, without priority of a rule on another one.
    * The priority is instead based on the application rule index in the source code.
    *

@@ -4,17 +4,17 @@ import {SourceElement} from '../SourceElement';
 import {Rule} from '../Rule';
 
 /**
- * lexer preprocess phase - rules are all applied according a cursor going
+ * lexer preprocess stage - rules are all applied according a cursor going
  * from the beginning to the end of the source code.
  *
  * Warning: slow method.
- * To be used for rules that cannot be well applied in the lexer main phase.
+ * To be used for rules that cannot be well applied in the lexer main stage.
  *
  * @param {State} initialState
  * @param {Rule[]} rules
  * @returns {State}
  */
-export const preprocessorPhase = (
+export const preprocessorStage = (
   initialState: State,
   rules: Rule[]
 ): State => {

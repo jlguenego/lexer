@@ -132,14 +132,14 @@ Therefore this lexer do both algorithms successively:
 2. **Main**: performs the fast way: applying the rules one after the other to the state.
 
 The recommandation is to mark a rule with the preprocess flag only if the
-main phase cannot apply the rule correctly. Of course if there is no rules with preprocess flag,
-no need to run the preprocessing phase.
+main stage cannot apply the rule correctly. Of course if there is no rules with preprocess flag,
+no need to run the preprocessing stage.
 
-The preprocess phase applies all rules, and select the rule that will
+The preprocess stage applies all rules, and select the rule that will
 apply at the smallest index of the source string.
-It is slower than the main phase because there is many rules applied for finally only one selected.
+It is slower than the main stage because there is many rules applied for finally only one selected.
 
-The main phase applies one rule after the other. This means that the order of rules declaration are important.
+The main stage applies one rule after the other. This means that the order of rules declaration are important.
 For instance, the keyword rules should be applied from the longest one to the shortest one ([maximal munch rule](https://en.wikipedia.org/wiki/Maximal_munch))
 The most generic one (identifer, type, etc.) must be applied with very low priority,
 so it is recommanded to place them at the end of the rule list.
