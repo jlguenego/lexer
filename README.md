@@ -138,6 +138,7 @@ no need to run the preprocessing stage.
 The preprocess stage applies all rules, and select the rule that will
 apply at the smallest index of the source string.
 It is slower than the main stage because there is many rules applied for finally only one selected.
+The preprocess phase also allows to make rule for [stropping](<https://en.wikipedia.org/wiki/Stropping_(syntax)>).
 
 The main stage applies one rule after the other. This means that the order of rules declaration are important.
 For instance, the keyword rules should be applied from the longest one to the shortest one ([maximal munch rule](https://en.wikipedia.org/wiki/Maximal_munch))
