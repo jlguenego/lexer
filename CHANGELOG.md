@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/jlguenego/lexer/compare/v1.4.0...v1.5.0) (2021-01-21)
+
+
+### Features
+
+* added ctxt inside rules. off-side rules. ([dbc913c](https://github.com/jlguenego/lexer/commit/dbc913caee8111fb819df8cd35701c1dc7689463))
+* added expand fn ([9d7aff8](https://github.com/jlguenego/lexer/commit/9d7aff85aa8968a3b5544014f569f1ff312eb77f))
+
+
+### Bug Fixes
+
+* missing export ([7470a80](https://github.com/jlguenego/lexer/commit/7470a807b2f40d0ca62a170abc0431d34ee164e9))
+
 ## [1.4.0](https://github.com/jlguenego/lexer/compare/v1.3.0...v1.4.0) (2021-01-02)
 
 
