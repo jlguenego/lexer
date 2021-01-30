@@ -117,7 +117,8 @@ TODO:
 This module purpose is to tokenize a source code input.
 In computer science, this process is known under the term
 [lexical analysis](https://en.wikipedia.org/wiki/Lexical_analysis).
-We call it also a **lexer**.
+We call it also a **lexer**. The most famous lexer is flex, but this is designed for the C world.
+Here we want a lexer in the javascript world.
 
 `const tokenSequence = new Lexer(rules).tokenize(str);`
 
@@ -134,16 +135,18 @@ The state is a sequence of two types of element:
 At the beginning the state is an array of one **source element** reflecting the entire source code.
 At the end the state must be an array of only tokens, otherwise the source code is not respecting the syntax.
 
-Normally, the source code is tokenized from the beginning to the end of the string (called left to right scan).
-But tokenizing can be faster if instead of looking from the beginning to the end,
+Normally, the source code is tokenized from the beginning to the end of the string (called left to right scan) in one pass.
+But tokenizing can be simpler if instead of looking from the beginning to the end,
 we choose to apply successively one rule after another to the current state.
 The drawback is that certains rules (for instance string, comment) cannot be well
 correctly tokenized if they are nested together.
 
-Therefore this lexer do both algorithms successively:
+This parser does not contain any generators like flex.
 
-1. **Preprocessing**: performs the slow and robust method with only the rules marked as preprocess flag.
-2. **Main**: performs the fast way: applying the rules one after the other to the state.
+Therefore this lexer do both algorithms successively in two passes:
+
+1. **Preprocessing** pass: performs the slow and robust method with only the rules marked as preprocess flag.
+2. **Main** pass: performs the fast way: applying the rules one after the other to the state.
 
 The recommandation is to mark a rule with the preprocess flag only if the
 main stage cannot apply the rule correctly. Of course if there is no rules with preprocess flag,
